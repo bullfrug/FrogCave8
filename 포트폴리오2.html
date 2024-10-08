@@ -1,0 +1,3243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<style>
+    .scroll-position {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+
+
+    body {
+        margin: 0 auto;
+        background-color: #161824;
+        width: 100%;
+        height: 100%;
+    }
+
+    .header {
+        width: 100%;
+        height: 80px;
+        border: 1px solid white;
+        background-color: #06070a;
+        display: flex;
+        margin: 0 auto;
+        position: fixed;
+        z-index: 1;
+    }
+
+    .header_2 {
+        width: 100%;
+        height: 80px;
+        border: 1px solid white;
+        background-color: #06070a;
+        margin: 0 auto;
+    }
+
+    .logo {
+        width: 85px;
+        height: 68%;
+        background: url(./포트이미지/disney-plus-logo-white-update.f384bde4d5a7f1f455e2dc7d8d4348ae.png) no-repeat center / contain;
+        margin-top: 8px;
+        margin-left: 35px;
+        cursor: pointer;
+    }
+
+    #h_img7 {
+        width: 35px;
+        height: 30px;
+        color: white;
+        margin-top: 22px;
+        display: flex;
+        cursor: pointer;
+    }
+
+    .text1,
+    .text3,
+    .text2,
+    .text4,
+    .text5,
+    .text6 {
+        width: 50px;
+        height: 30px;
+        margin: 0;
+        display: flex;
+        font-size: 14px;
+        font-weight: 900;
+        box-sizing: border-box;
+        color: white;
+        margin-top: 27px;
+        cursor: pointer;
+    }
+
+    .text2 {
+        width: 60px;
+    }
+
+    .text3 {
+        width: 110px;
+    }
+
+    .text4 {
+        width: 60px;
+    }
+
+    .text5 {
+        width: 70px;
+    }
+
+    .text6 {
+        width: 110px;
+    }
+
+    .h_img1 {
+        margin-left: 42px;
+        background: url(./포트이미지/홈.PNG) no-repeat center / contain;
+    }
+
+    .h_img2 {
+        background: url(./포트이미지/찾아보기.PNG) no-repeat center / contain;
+    }
+
+    .h_img3 {
+        background: url(./포트이미지/관심컨텐츠.PNG) no-repeat center / contain;
+    }
+
+    .h_img4 {
+        background: url(./포트이미지/영화.PNG) no-repeat center / contain;
+    }
+
+    .h_img5 {
+        background: url(./포트이미지/시리즈.PNG) no-repeat center / contain;
+    }
+
+    .h_img6 {
+        background: url(./포트이미지/오리지날.PNG) no-repeat center / contain;
+    }
+
+    .outer {
+        margin: 0 auto;
+        width: 100%;
+        height: 725px;
+    }
+
+    .btn_box1 {
+        width: 100%;
+        height: 55px;
+        box-sizing: border-box;
+    }
+
+    #container {
+        width: 100%;
+        height: 725px;
+        margin: 0 auto;
+        padding-left: -20px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slides {
+        width: 91.5%;
+        height: 600px;
+        display: flex;
+        transition: all 0.5s;
+        box-sizing: border-box;
+        position: absolute;
+    left: 4.3%;
+
+    }
+
+    .slide {
+        width: 100%;
+        min-width: 100%;
+        height: 595px;
+        box-sizing: border-box;
+        cursor: pointer;
+        left: 4.3%;
+    }
+
+    .slide:hover {
+        border: 5px solid white;
+        border-radius: 10px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .cuddle {
+        border: 1px solid;
+        width: 150px;
+        height: 40px;
+        position: absolute;
+    }
+
+    .dots {
+        width: 600px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid;
+        position: absolute;
+        margin-top: 600px;
+        left: 35.2%;
+
+    }
+
+    .dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1px solid;
+    }
+
+    .dot.active {
+        background-color: #717171;
+    }
+
+
+    .main2 {
+        width: 91.5%;
+        height: 160px;
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .main2_1 {
+        width: 16.5%;
+        height: 100%;
+        margin-right: 1%;
+        background: #2c2e3a;
+        border-radius: 13px;
+        position: relative;
+        border: 2px solid;
+        transition: transform 0.3s, border 0.3s;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.781),
+            inset 0 -10px 20px rgba(201, 199, 199, 0.5);
+        cursor: pointer;
+        overflow: hidden;
+
+    }
+
+    .main2_1:hover {
+        transform: scale(1.09);
+        border: 4px solid white;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s;
+        object-fit: cover;
+    }
+
+    .overlay-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+
+    #main2_2 {
+        margin-right: 0;
+    }
+
+    .F_main {
+        width: 100%;
+        height: 800vh;
+    }
+
+    .bon1 {
+        width: 100%;
+        height: 50px;
+        color: #b4b4b6;
+        font-weight: 900;
+        font-size: 18px;
+        letter-spacing: -0.06em;
+        margin-bottom: 15px;
+        margin-top: 10px;
+        margin-left: 72px;
+
+    }
+
+    .bon2 {
+        width: 100%;
+        height: 90%;
+        max-height: 200px;
+        margin-top: 5px;
+
+    }
+
+    .slider {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        max-width: 2400px;
+        height: 100%;
+        max-height: 200px;
+        border: 1px solid;
+        position: absolute;
+    }
+
+    #slider_1 {
+        width: 100%;
+        height: 600px;
+    }
+
+    .image-container {
+        width: 100%;
+        max-width: 335.5px;
+        height: 100%;
+        max-height: 200px;
+        display: flex;
+        transition: transform 0.5s ease;
+        box-sizing: border-box;
+        margin-top: 0;
+        border: 1px solid;
+        position: absolute;
+        margin-left: 70px;
+
+    }
+
+    .image-container img {
+        width: 100%;
+        max-width: 335.5px;
+        height: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        margin-right: 20px;
+        transition: transform 0.3s, border 0.3s;
+        cursor: pointer;
+        border-radius: 10px;
+
+    }
+
+    .image-container img:hover,
+    .image-container3 img:hover,
+    .image-container4 img:hover,
+    .image-container5 img:hover,
+    .image-container6 img:hover,
+    .image-container7 img:hover,
+    .image-container8 img:hover,
+    .image-container9 img:hover,
+    .image-container10 img:hover,
+    .image-container11 img:hover,
+    .image-container12 img:hover,
+    .image-container13 img:hover,
+    .image-container14 img:hover,
+    .image-container15 img:hover,
+    .image-container16 img:hover,
+    .image-container17 img:hover,
+    .image-container18 img:hover,
+    .image-container19 img:hover,
+    .image-container20 img:hover,
+    .image-container21 img:hover,
+    .image-container22 img:hover,
+    .image-container23 img:hover,
+    .image-container24 img:hover,
+    .image-container25 img:hover {
+        transform: scale(1.09);
+        border: 4px solid white;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .button-container2,
+    .button-container3,
+    .button-container4,
+    .button-container5,
+    .button-container6,
+    .button-container7,
+    .button-container8,
+    .button-container9,
+    .button-container10,
+    .button-container11,
+    .button-container12,
+    .button-container13,
+    .button-container14,
+    .button-container15,
+    .button-container16,
+    .button-container17,
+    .button-container18,
+    .button-container19,
+    .button-container20,
+    .button-container21,
+    .button-container22,
+    .button-container23,
+    .button-container24,
+    .button-container25 {
+        width: 100%;
+        height: 1px;
+        position: absolute;
+    }
+
+    .image-container3,
+    .image-container4,
+    .image-container5,
+    .image-container6,
+    .image-container7,
+    .image-container8,
+    .image-container9,
+    .image-container10,
+    .image-container11,
+    .image-container12,
+    .image-container13,
+    .image-container14,
+    .image-container15,
+    .image-container16,
+    .image-container17,
+    .image-container18,
+    .image-container19,
+    .image-container20,
+    .image-container21,
+    .image-container22,
+    .image-container23,
+    .image-container24,
+    .image-container25 {
+        width: 100%;
+        max-width: 335.5px;
+        height: 100%;
+        max-height: 200px;
+        display: flex;
+        transition: transform 0.5s ease;
+        box-sizing: border-box;
+        margin-top: 0;
+        border: 1px solid;
+        position: absolute;
+        margin-left: 70px;
+    }
+
+    .image-container3 img,
+    .image-container4 img,
+    .image-container5 img,
+    .image-container6 img,
+    .image-container7 img,
+    .image-container8 img,
+    .image-container9 img,
+    .image-container10 img,
+    .image-container11 img,
+    .image-container12 img,
+    .image-container13 img,
+    .image-container14 img,
+    .image-container15 img,
+    .image-container16 img,
+    .image-container17 img,
+    .image-container18 img,
+    .image-container19 img,
+    .image-container20 img,
+    .image-container21 img,
+    .image-container22 img,
+    .image-container23 img,
+    .image-container24 img,
+    .image-container25 img {
+        width: 100%;
+        max-width: 335.5px;
+        height: 100%;
+        max-height: 200px;
+        object-fit: contain;
+        margin-right: 20px;
+        transition: transform 0.3s, border 0.3s;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+
+    #prevButton,
+    #prevButton3,
+    #prevButton4,
+    #prevButton5,
+    #prevButton6,
+    #prevButton7,
+    #prevButton8,
+    #prevButton9,
+    #prevButton10,
+    #prevButton11,
+    #prevButton12,
+    #prevButton13,
+    #prevButton14,
+    #prevButton15,
+    #prevButton16,
+    #prevButton17,
+    #prevButton18,
+    #prevButton19,
+    #prevButton20,
+    #prevButton21,
+    #prevButton22,
+    #prevButton23,
+    #prevButton24,
+    #prevButton25 {
+        width: 60px;
+        height: 199.2px;
+        box-sizing: border-box;
+        background-color: #b4b4b600;
+        border: none;
+        cursor: pointer;
+        font-size: 40px;
+        font-weight: 900;
+        color: white;
+
+    }
+
+    #nextButton,
+    #nextButton3,
+    #nextButton4,
+    #nextButton5,
+    #nextButton6,
+    #nextButton7,
+    #nextButton8,
+    #nextButton9,
+    #nextButton10,
+    #nextButton11,
+    #nextButton12,
+    #nextButton13,
+    #nextButton14,
+    #nextButton15,
+    #nextButton16,
+    #nextButton17,
+    #nextButton18,
+    #nextButton19,
+    #nextButton20,
+    #nextButton21,
+    #nextButton22,
+    #nextButton23,
+    #nextButton24,
+    #nextButton25 #nextButton {
+        width: 60px;
+        height: 199.2px;
+        box-sizing: border-box;
+        margin-left: 93.3%;
+        background-color: #b4b4b600;
+        border: none;
+        cursor: pointer;
+        font-size: 40px;
+        font-weight: 900;
+        color: white;
+
+    }
+
+    #nextButton:hover,
+    #nextButton3:hover,
+    #nextButton4:hover,
+    #nextButton5:hover,
+    #nextButton6:hover,
+    #nextButton7:hover,
+    #nextButton8:hover,
+    #nextButton9:hover,
+    #nextButton10:hover,
+    #nextButton11:hover,
+    #nextButton12:hover,
+    #nextButton13:hover,
+    #nextButton14:hover,
+    #nextButton15:hover,
+    #nextButton16:hover,
+    #nextButton17:hover,
+    #nextButton18:hover,
+    #nextButton19:hover,
+    #nextButton20:hover,
+    #nextButton21:hover,
+    #nextButton22:hover,
+    #nextButton23:hover,
+    #nextButton24:hover,
+    #nextButton25:hover {
+        opacity: 1;
+    }
+
+    button:disabled {
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <div class="logo"></div>
+        <div class="h_img1" id="h_img7"></div>
+        <a href="./포트폴리오.html">
+            <div class="text1">홈</div>
+        </a>
+        <div class="h_img2" id="h_img7"></div>
+        <div class="text2">검색</div>
+        <div class="h_img3" id="h_img7"></div>
+        <div class="text3">관심 콘텐츠</div>
+        <div class="h_img4" id="h_img7"></div>
+        <div class="text4">영화</div>
+        <div class="h_img5" id="h_img7"></div>
+        <div class="text5">시리즈</div>
+        <div class="h_img6" id="h_img7"></div>
+        <div class="text6">오리지널</div>
+    </div>
+    <div class="outer">
+        <div class="header_2"></div>
+        <div id="container">
+            <div class="slides">
+                <div class="slide"><img src="./포트이미지/변환된것/배너1.png" alt="Image 1">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너2.png" alt="Image 2">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너3.png" alt="Image 3">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너4.png" alt="Image 4">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너5.png" alt="Image 5">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너6.png" alt="Image 6">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너7.png" alt="Image 7">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너8.png" alt="Image 8">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너9.png" alt="Image 9">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너10.png" alt="Image 10">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너11.png" alt="Image 11">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너12.png" alt="Image 12">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너13.png" alt="Image 13">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너14.png" alt="Image 14">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/85368d39-ea1f-47d5-a1ef-66538a83710e.png" alt="Image 15">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너1.png" alt="Image 1">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너2.png" alt="Image 2">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너3.png" alt="Image 3">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너4.png" alt="Image 4">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너5.png" alt="Image 5">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너6.png" alt="Image 6">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너7.png" alt="Image 7">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너8.png" alt="Image 8">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너9.png" alt="Image 9">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너10.png" alt="Image 10">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너11.png" alt="Image 11">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너12.png" alt="Image 12">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너13.png" alt="Image 13">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너14.png" alt="Image 14">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/85368d39-ea1f-47d5-a1ef-66538a83710e.png" alt="Image 15">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너1.png" alt="Image 1">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너2.png" alt="Image 2">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너3.png" alt="Image 3">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너4.png" alt="Image 4">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너5.png" alt="Image 5">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너6.png" alt="Image 6">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너7.png" alt="Image 7">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너8.png" alt="Image 8">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너9.png" alt="Image 9">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너10.png" alt="Image 10">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너11.png" alt="Image 11">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너12.png" alt="Image 12">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너13.png" alt="Image 13">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/배너14.png" alt="Image 14">
+                </div>
+                <div class="slide"><img src="./포트이미지/변환된것/85368d39-ea1f-47d5-a1ef-66538a83710e.png" alt="Image 15">
+                </div>
+            </div>
+            <div class="cuddle">
+                <button class="prev">이전</button>
+                <button class="next">다음</button>
+            </div>
+            <div class="cuddle2"></div>
+            <div class="dots">
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+                <span class="dot" data-index="5"></span>
+                <span class="dot" data-index="6"></span>
+                <span class="dot" data-index="7"></span>
+                <span class="dot" data-index="8"></span>
+                <span class="dot" data-index="9"></span>
+                <span class="dot" data-index="10"></span>
+                <span class="dot" data-index="11"></span>
+                <span class="dot" data-index="12"></span>
+                <span class="dot" data-index="13"></span>
+                <span class="dot" data-index="14"></span>
+            </div>
+        </div>
+    </div>
+    <div class="main2">
+        <div class="main2_1">
+            <video class="video" muted loop>
+                <source src="./포트이미지/KakaoTalk_20241006_031056809.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="./포트이미지/변환된것/메인1.png" alt="Overlay Image" class="overlay-image">
+        </div>
+        <div class="main2_1">
+            <video class="video" muted loop>
+                <source src="./포트이미지/KakaoTalk_20241006_030450459.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="./포트이미지/변환된것/메인2.png" alt="Overlay Image" class="overlay-image">
+        </div>
+        <div class="main2_1">
+            <video class="video" muted loop>
+                <source src="./포트이미지/KakaoTalk_20241006_031527694.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="./포트이미지/변환된것/메인3.png" alt="Overlay Image" class="overlay-image">
+        </div>
+        <div class="main2_1">
+            <video class="video" muted loop>
+                <source src="./포트이미지/KakaoTalk_20241006_032446958.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="./포트이미지/변환된것/메인4.png" alt="Overlay Image" class="overlay-image">
+        </div>
+        <div class="main2_1">
+            <video class="video" muted loop>
+                <source src="./포트이미지/KakaoTalk_20241006_033145332.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="./포트이미지/변환된것/메인5.png" alt="Overlay Image" class="overlay-image">
+        </div>
+        <div class="main2_1" id="main2_2">
+            <video class="video" muted loop>
+                <source src="./포트이미지/KakaoTalk_20241006_033815671.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="./포트이미지/변환된것/메인6.png" alt="Overlay Image" class="overlay-image">
+        </div>
+    </div>
+
+
+
+    <div class="F_main">
+        <div class="bon1"><br>황금연휴에 뭐 보지?</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container" id="imageContainer"></div>
+            </div>
+            <div class="button-container2">
+                <button id="prevButton" class="visible">〈</button>
+                <button id="nextButton">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>디즈니+ 최신작</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container3" id="imageContainer3"></div>
+            </div>
+            <div class="button-container3">
+                <button id="prevButton3" class="visible">〈</button>
+                <button id="nextButton3">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>드라마 영화</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container4" id="imageContainer4"></div>
+            </div>
+            <div class="button-container4">
+                <button id="prevButton4" class="visible">〈</button>
+                <button id="nextButton4">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>한국인이 사랑하는 영화</div>
+        <div class="bon2">
+            <div class="slider" id="slider_1">
+                <div class="image-container5" id="imageContainer5"></div>
+            </div>
+            <div class="button-container5">
+                <button id="prevButton5" class="visible">〈</button>
+                <button id="nextButton5">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>취향저격 추천 콘텐츠</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container6" id="imageContainer6"></div>
+            </div>
+            <div class="button-container6">
+                <button id="prevButton6" class="visible">〈</button>
+                <button id="nextButton6">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>놓칠 수 없는 히트 영화 모음</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container7" id="imageContainer7"></div>
+            </div>
+            <div class="button-container7">
+                <button id="prevButton7" class="visible">〈</button>
+                <button id="nextButton7">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>평론가 호평 콘텐츠</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container8" id="imageContainer8"></div>
+            </div>
+            <div class="button-container8">
+                <button id="prevButton8" class="visible">〈</button>
+                <button id="nextButton8">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>애니메이션 시리즈</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container9" id="imageContainer9"></div>
+            </div>
+            <div class="button-container9">
+                <button id="prevButton9" class="visible">〈</button>
+                <button id="nextButton9">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>디즈니채널 인기작</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container10" id="imageContainer10"></div>
+            </div>
+            <div class="button-container10">
+                <button id="prevButton10" class="visible">〈</button>
+                <button id="nextButton10">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>실화 바탕</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container11" id="imageContainer11"></div>
+            </div>
+            <div class="button-container11">
+                <button id="prevButton11" class="visible">〈</button>
+                <button id="nextButton11">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>미드 마니아 정주행 추천작</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container12" id="imageContainer12"></div>
+            </div>
+            <div class="button-container12">
+                <button id="prevButton12" class="visible">〈</button>
+                <button id="nextButton12">〉</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>미키 마우스 & 친구들</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container13" id="imageContainer13"></div>
+            </div>
+            <div class="button-container13">
+                <button id="prevButton13">이전</button>
+                <button id="nextButton13">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>오리지널</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container14" id="imageContainer14"></div>
+            </div>
+            <div class="button-container14">
+                <button id="prevButton14">이전</button>
+                <button id="nextButton14">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>로맨스</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container15" id="imageContainer15"></div>
+            </div>
+            <div class="button-container15">
+                <button id="prevButton15">이전</button>
+                <button id="nextButton15">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>라이브 액션 영화</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container16" id="imageContainer16"></div>
+            </div>
+            <div class="button-container16">
+                <button id="prevButton16">이전</button>
+                <button id="nextButton16">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>귀가 즐거운 음악</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container17" id="imageContainer17"></div>
+            </div>
+            <div class="button-container17">
+                <button id="prevButton17">이전</button>
+                <button id="nextButton17">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>호러</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container18" id="imageContainer18"></div>
+            </div>
+            <div class="button-container18">
+                <button id="prevButton18">이전</button>
+                <button id="nextButton18">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>시간이 별로 없다면?</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container19" id="imageContainer19"></div>
+            </div>
+            <div class="button-container19">
+                <button id="prevButton19">이전</button>
+                <button id="nextButton19">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>애니메이션 영화</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container20" id="imageContainer20"></div>
+            </div>
+            <div class="button-container20">
+                <button id="prevButton20">이전</button>
+                <button id="nextButton20">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>마블 레거시 에니메이션</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container21" id="imageContainer21"></div>
+            </div>
+            <div class="button-container21">
+                <button id="prevButton21">이전</button>
+                <button id="nextButton21">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>상어</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container22" id="imageContainer22"></div>
+            </div>
+            <div class="button-container22">
+                <button id="prevButton22">이전</button>
+                <button id="nextButton22">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>지금 뜨는 콘텐츠</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container23" id="imageContainer23"></div>
+            </div>
+            <div class="button-container23">
+                <button id="prevButton23">이전</button>
+                <button id="nextButton23">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>뮤직 & 댄스</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container24" id="imageContainer24"></div>
+            </div>
+            <div class="button-container24">
+                <button id="prevButton24">이전</button>
+                <button id="nextButton24">다음</button>
+            </div>
+        </div>
+
+        <div class="bon1"><br>추억 소환 영화 및 시리즈</div>
+        <div class="bon2">
+            <div class="slider">
+                <div class="image-container25" id="imageContainer25"></div>
+            </div>
+            <div class="button-container25">
+                <button id="prevButton25">이전</button>
+                <button id="nextButton25">다음</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="M_main"></div>
+    <div class="L_main"></div>
+    <div class="putter"></div>
+    </div>
+
+
+
+
+
+    <div class="scroll-position" id="scrollPosition">스크롤 위치: 0</div>
+
+
+
+    <script>
+
+
+        $(document).ready(function () {
+            let currentIndex = 0;
+            const totalSlides = $('.slide').length;
+
+            function showSlide(index) {
+
+                if (index < 0) {
+                    currentIndex = totalSlides - 1;
+                } else if (index >= totalSlides) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex = index;
+                }
+                const imageContainer = document.getElementById('imageContainer');
+
+                $('.slides').css('transform', 'translateX(' + (-currentIndex * 100) + '%)');
+
+                $('.dot').removeClass('active');
+                $('.dot').eq(currentIndex).addClass('active');
+            }
+
+            $('.next').click(function () {
+                showSlide(currentIndex + 1);
+            });
+
+            $('.prev').click(function () {
+                showSlide(currentIndex - 1);
+            });
+
+            $('.dot').click(function () {
+                const index = $(this).data('index');
+                showSlide(index);
+            });
+
+            showSlide(currentIndex);
+        });
+
+
+        const videos = document.querySelectorAll('.video');
+
+        videos.forEach(video => {
+            video.addEventListener('mouseover', () => {
+                video.style.opacity = '1';
+                video.play();
+            });
+
+            video.addEventListener('mouseout', () => {
+                video.pause();
+                video.style.opacity = '0';
+            });
+        });
+
+        window.onload = () => {
+            videos.forEach(video => {
+                video.style.opacity = '0';
+            });
+        };
+
+        const imageContainer = document.getElementById('imageContainer');
+        let currentIndex = 0;
+        const images2 = [
+            './포트이미지/메인이미지1/c2eb4b4c-9340-4475-a2cb-e1f2f0e3256f.png',
+            './포트이미지/변환된것/기본2.png',
+            './포트이미지/변환된것/기본3.png',
+            './포트이미지/변환된것/기본4.png',
+            './포트이미지/변환된것/기본5.png',
+            './포트이미지/변환된것/기본6.png',
+            './포트이미지/변환된것/기본7.png',
+            './포트이미지/변환된것/기본8.png',
+            './포트이미지/변환된것/기본9.png',
+            './포트이미지/변환된것/기본10.png',
+            './포트이미지/변환된것/기본11.png',
+            './포트이미지/변환된것/기본12.png',
+            './포트이미지/변환된것/기본13.png',
+            './포트이미지/변환된것/기본14.png',
+            './포트이미지/변환된것/기본15.png',
+            './포트이미지/변환된것/기본16.png',
+            './포트이미지/변환된것/기본17.png',
+            './포트이미지/변환된것/기본18.png',
+            './포트이미지/변환된것/기본19.png',
+            './포트이미지/변환된것/기본20.png',
+            './포트이미지/변환된것/기본21.png',
+            './포트이미지/변환된것/기본22.png',
+            './포트이미지/변환된것/기본23.png',
+            './포트이미지/변환된것/기본24.png',
+            './포트이미지/변환된것/기본25.png',
+            './포트이미지/변환된것/기본26.png',
+            './포트이미지/변환된것/기본27.png',
+            './포트이미지/변환된것/기본28.png',
+            './포트이미지/변환된것/기본29.png',
+            './포트이미지/변환된것/기본30.png',
+        ];
+
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const visibleImages = 1;
+        const maxClicks = 5;
+        let prevClickCount = 0;
+        let nextClickCount = 0;
+
+        function updateSlider() {
+            const totalImages = images2.length;
+            const maxIndex = totalImages - visibleImages;
+
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            } else if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+
+            imageContainer.style.transform = `translateX(-${currentIndex * 1766}px)`;
+            prevButton.disabled = currentIndex === 0;
+            nextButton.disabled = currentIndex >= maxClicks;
+        }
+
+        function handlePrevClick() {
+            if (prevClickCount < maxClicks) {
+                currentIndex--;
+                prevClickCount++;
+                nextClickCount = Math.max(0, nextClickCount - 1);
+                updateSlider();
+            }
+        }
+
+        function handleNextClick() {
+            if (nextClickCount < maxClicks) {
+                currentIndex++;
+                nextClickCount++;
+                prevClickCount = Math.max(0, prevClickCount - 1);
+                updateSlider();
+            }
+        }
+
+        prevButton.addEventListener('click', handlePrevClick);
+        nextButton.addEventListener('click', handleNextClick);
+        function initializeSlider() {
+            images2.forEach(imageSrc => {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                imageContainer.appendChild(img);
+            });
+            updateSlider();
+        }
+
+        initializeSlider();
+
+        const imageContainer3 = document.getElementById('imageContainer3');
+        let currentImageIndex3 = 0;
+        const imageList3 = [
+            './포트이미지/변환된것/구본1.png',
+            './포트이미지/변환된것/구본2.png',
+            './포트이미지/변환된것/구본3.png',
+            './포트이미지/변환된것/구본4.png',
+            './포트이미지/변환된것/구본5.png',
+            './포트이미지/변환된것/구본6.png',
+            './포트이미지/변환된것/구본7.png',
+            './포트이미지/변환된것/구본8.png',
+            './포트이미지/변환된것/구본9.png',
+            './포트이미지/변환된것/구본10.png',
+            './포트이미지/변환된것/구본11.png',
+            './포트이미지/변환된것/구본12.png',
+            './포트이미지/변환된것/구본13.png',
+            './포트이미지/변환된것/구본14.png',
+            './포트이미지/변환된것/구본15.png',
+            './포트이미지/변환된것/구본16.png',
+            './포트이미지/변환된것/구본17.png',
+            './포트이미지/변환된것/구본18.png',
+            './포트이미지/변환된것/구본19.png',
+            './포트이미지/변환된것/구본20.png',
+            './포트이미지/변환된것/구본21.png',
+            './포트이미지/변환된것/구본22.png',
+            './포트이미지/변환된것/구본23.png',
+            './포트이미지/변환된것/구본24.png',
+            './포트이미지/변환된것/구본25.png',
+            './포트이미지/변환된것/구본26.png',
+            './포트이미지/변환된것/구본27.png',
+            './포트이미지/변환된것/구본28.png',
+            './포트이미지/변환된것/구본29.png',
+            './포트이미지/변환된것/구본30.png',
+        ];
+
+        const funkyImageContainer = document.getElementById('imageContainer3');
+        const funkyPrevButton = document.getElementById('prevButton3');
+        const funkyNextButton = document.getElementById('nextButton3');
+
+        let funkyCurrentIndex = 0;
+        const funkyVisibleImages = 4;
+        const funkyMaxClicks = 5;
+        let funkyPrevClickCount = 0;
+        let funkyNextClickCount = 0;
+
+        function funkyUpdateSlider() {
+            const totalFunkyImages = imageList3.length;
+            const maxFunkyIndex = totalFunkyImages - funkyVisibleImages;
+
+            if (funkyCurrentIndex < 0) {
+                funkyCurrentIndex = 0;
+            } else if (funkyCurrentIndex > maxFunkyIndex) {
+                funkyCurrentIndex = maxFunkyIndex;
+            }
+
+            funkyImageContainer.style.transform = `translateX(-${funkyCurrentIndex * 1766}px)`;
+
+            funkyPrevButton.disabled = funkyCurrentIndex === 0;
+            funkyNextButton.disabled = funkyCurrentIndex >= maxClicks;
+        }
+
+        function funkyHandlePrevClick() {
+            if (funkyPrevClickCount < funkyMaxClicks) {
+                funkyCurrentIndex--;
+                funkyPrevClickCount++;
+                funkyNextClickCount = Math.max(0, funkyNextClickCount - 1);
+                funkyUpdateSlider();
+            }
+        }
+
+        function funkyHandleNextClick() {
+            if (funkyNextClickCount < funkyMaxClicks) {
+                funkyCurrentIndex++;
+                funkyNextClickCount++;
+                funkyPrevClickCount = Math.max(0, funkyPrevClickCount - 1);
+                funkyUpdateSlider();
+            }
+        }
+
+        funkyPrevButton.addEventListener('click', funkyHandlePrevClick);
+        funkyNextButton.addEventListener('click', funkyHandleNextClick);
+
+        function funkyInitializeSlider() {
+            imageList3.forEach(imageSrc => {
+                const funkyImg = document.createElement('img');
+                funkyImg.src = imageSrc;
+                funkyImageContainer.appendChild(funkyImg);
+            });
+            funkyUpdateSlider();
+        }
+
+        funkyInitializeSlider();
+
+
+        const imageList4 = [
+            './포트이미지/변환된것/가본1.png',
+            './포트이미지/변환된것/가본2.png',
+            './포트이미지/변환된것/가본3.png',
+            './포트이미지/변환된것/가본4.png',
+            './포트이미지/변환된것/가본5.png',
+            './포트이미지/변환된것/가본6.png',
+            './포트이미지/변환된것/가본7.png',
+            './포트이미지/변환된것/가본8.png',
+            './포트이미지/변환된것/가본9.png',
+            './포트이미지/변환된것/가본10.png',
+            './포트이미지/변환된것/가본11.png',
+            './포트이미지/변환된것/가본12.png',
+            './포트이미지/변환된것/가본13.png',
+            './포트이미지/변환된것/가본14.png',
+            './포트이미지/변환된것/가본15.png',
+            './포트이미지/변환된것/가본16.png',
+            './포트이미지/변환된것/가본17.png',
+            './포트이미지/변환된것/가본18.png',
+            './포트이미지/변환된것/가본19.png',
+            './포트이미지/변환된것/가본20.png',
+            './포트이미지/변환된것/가본21.png',
+            './포트이미지/변환된것/가본22.png',
+            './포트이미지/변환된것/가본23.png',
+            './포트이미지/변환된것/가본24.png',
+            './포트이미지/변환된것/가본25.png',
+            './포트이미지/변환된것/가본26.png',
+            './포트이미지/변환된것/가본27.png',
+            './포트이미지/변환된것/가본28.png',
+            './포트이미지/변환된것/가본29.png',
+            './포트이미지/변환된것/가본30.png',
+        ];
+
+        const whimsicalImageContainer4 = document.getElementById('imageContainer4');
+    const quirkyPrevButton4 = document.getElementById('prevButton4');
+    const quirkyNextButton4 = document.getElementById('nextButton4');
+
+    let quirkyCurrentIndex4 = 0;
+    const quirkyVisibleImages4 = 4; 
+    const quirkyMaxClicks4 = 5; 
+    let quirkyPrevClickCount4 = 0;
+    let quirkyNextClickCount4 = 0;
+
+    function quirkyUpdateSlider4() {
+        const totalQuirkyImages4 = imageList4.length;
+        const maxQuirkyIndex4 = totalQuirkyImages4 - quirkyVisibleImages4;
+
+        if (quirkyCurrentIndex4 < 0) {
+            quirkyCurrentIndex4 = 0;
+        } else if (quirkyCurrentIndex4 > maxQuirkyIndex4) {
+            quirkyCurrentIndex4 = maxQuirkyIndex4;
+        }
+
+        whimsicalImageContainer4.style.transform = `translateX(-${quirkyCurrentIndex4 * 1766}px)`;
+
+        quirkyPrevButton4.disabled = quirkyCurrentIndex4 === 0; 
+        quirkyNextButton4.disabled = quirkyCurrentIndex4 >= maxClicks;
+    }
+
+    function quirkyHandlePrevClick4() {
+        if (quirkyPrevClickCount4 < quirkyMaxClicks4) {
+            quirkyCurrentIndex4--;
+            quirkyPrevClickCount4++;
+            quirkyNextClickCount4 = Math.max(0, quirkyNextClickCount4 - 1);
+            quirkyUpdateSlider4();
+        }
+    }
+
+    function quirkyHandleNextClick4() {
+        if (quirkyNextClickCount4 < quirkyMaxClicks4) {
+            quirkyCurrentIndex4++;
+            quirkyNextClickCount4++;
+            quirkyPrevClickCount4 = Math.max(0, quirkyPrevClickCount4 - 1);
+            quirkyUpdateSlider4();
+        }
+    }
+
+    quirkyPrevButton4.addEventListener('click', quirkyHandlePrevClick4);
+    quirkyNextButton4.addEventListener('click', quirkyHandleNextClick4);
+
+    function quirkyInitializeSlider4() {
+        imageList4.forEach(imageSrc => {
+            const quirkyImg4 = document.createElement('img');
+            quirkyImg4.src = imageSrc;
+            whimsicalImageContainer4.appendChild(quirkyImg4);
+        });
+        quirkyUpdateSlider4();
+    }
+
+    quirkyInitializeSlider4();
+
+        const imageList5 = [
+            './포트이미지/변환된것/갸본1.png',
+            './포트이미지/변환된것/갸본2.png',
+            './포트이미지/변환된것/갸본3.png',
+            './포트이미지/변환된것/갸본4.png',
+            './포트이미지/변환된것/갸본5.png',
+            './포트이미지/변환된것/갸본6.png',
+            './포트이미지/변환된것/갸본7.png',
+            './포트이미지/변환된것/갸본8.png',
+            './포트이미지/변환된것/갸본9.png',
+            './포트이미지/변환된것/갸본10.png',
+            './포트이미지/변환된것/갸본11.png',
+            './포트이미지/변환된것/갸본12.png',
+            './포트이미지/변환된것/갸본13.png',
+            './포트이미지/변환된것/갸본14.png',
+            './포트이미지/변환된것/갸본15.png',
+            './포트이미지/변환된것/갸본16.png',
+            './포트이미지/변환된것/갸본17.png',
+            './포트이미지/변환된것/갸본18.png',
+            './포트이미지/변환된것/갸본19.png',
+            './포트이미지/변환된것/갸본20.png',
+            './포트이미지/변환된것/갸본21.png',
+            './포트이미지/변환된것/갸본22.png',
+            './포트이미지/변환된것/갸본23.png',
+            './포트이미지/변환된것/갸본24.png',
+            './포트이미지/변환된것/갸본25.png',
+            './포트이미지/변환된것/갸본26.png',
+            './포트이미지/변환된것/갸본27.png',
+            './포트이미지/변환된것/갸본28.png',
+            './포트이미지/변환된것/갸본29.png',
+            './포트이미지/변환된것/갸본30.png',
+        ];
+
+        const imageContainer5 = document.getElementById('imageContainer5');
+    const prevButton5 = document.getElementById('prevButton5');
+    const nextButton5 = document.getElementById('nextButton5');
+
+    let currentIndex5 = 0;
+    const visibleImages5 = 4; 
+    const maxClicks5 = 5; 
+    let prevClickCount5 = 0;
+    let nextClickCount5 = 0;
+
+    function updateSlider5() {
+        const totalImages5 = imageList5.length;
+        const maxIndex5 = totalImages5 - visibleImages5;
+
+        if (currentIndex5 < 0) {
+            currentIndex5 = 0;
+        } else if (currentIndex5 > maxIndex5) {
+            currentIndex5 = maxIndex5;
+        }
+
+        imageContainer5.style.transform = `translateX(-${currentIndex5 * 1766}px)`;
+
+        prevButton5.disabled = currentIndex5 === 0; 
+        nextButton5.disabled = currentIndex5 >= maxClicks; 
+    }
+
+    function handlePrevClick5() {
+        if (prevClickCount5 < maxClicks5) {
+            currentIndex5--;
+            prevClickCount5++;
+            nextClickCount5 = Math.max(0, nextClickCount5 - 1);
+            updateSlider5();
+        }
+    }
+
+    function handleNextClick5() {
+        if (nextClickCount5 < maxClicks5) {
+            currentIndex5++;
+            nextClickCount5++;
+            prevClickCount5 = Math.max(0, prevClickCount5 - 1);
+            updateSlider5();
+        }
+    }
+
+    prevButton5.addEventListener('click', handlePrevClick5);
+    nextButton5.addEventListener('click', handleNextClick5);
+
+    function initializeSlider5() {
+        imageList5.forEach(imageSrc => {
+            const img5 = document.createElement('img');
+            img5.src = imageSrc;
+            imageContainer5.appendChild(img5);
+        });
+        updateSlider5();
+    }
+
+    initializeSlider5();
+
+
+        const imageList6 = [
+            './포트이미지/변환된것/거본1.png',
+            './포트이미지/변환된것/거본2.png',
+            './포트이미지/변환된것/거본3.png',
+            './포트이미지/변환된것/거본4.png',
+            './포트이미지/변환된것/거본5.png',
+            './포트이미지/변환된것/거본6.png',
+            './포트이미지/변환된것/거본7.png',
+            './포트이미지/변환된것/거본8.png',
+            './포트이미지/변환된것/거본9.png',
+            './포트이미지/변환된것/거본10.png',
+            './포트이미지/변환된것/거본11.png',
+            './포트이미지/변환된것/거본12.png',
+            './포트이미지/변환된것/거본13.png',
+            './포트이미지/변환된것/거본14.png',
+            './포트이미지/변환된것/거본15.png',
+            './포트이미지/변환된것/거본16.png',
+            './포트이미지/변환된것/거본17.png',
+            './포트이미지/변환된것/거본18.png',
+            './포트이미지/변환된것/거본19.png',
+            './포트이미지/변환된것/거본20.png',
+            './포트이미지/변환된것/거본21.png',
+            './포트이미지/변환된것/거본22.png',
+            './포트이미지/변환된것/거본23.png',
+            './포트이미지/변환된것/거본24.png',
+            './포트이미지/변환된것/거본25.png',
+            './포트이미지/변환된것/거본26.png',
+            './포트이미지/변환된것/거본27.png',
+            './포트이미지/변환된것/거본28.png',
+            './포트이미지/변환된것/거본29.png',
+            './포트이미지/변환된것/거본30.png',
+        ];
+
+        const imageContainer6 = document.getElementById('imageContainer6');
+    const prevButton6 = document.getElementById('prevButton6');
+    const nextButton6 = document.getElementById('nextButton6');
+
+    let currentIndex6 = 0;
+    const visibleImages6 = 4; 
+    const maxClicks6 = 5; 
+    let prevClickCount6 = 0;
+    let nextClickCount6 = 0;
+
+    function updateSlider6() {
+        const totalImages6 = imageList6.length;
+        const maxIndex6 = totalImages6 - visibleImages6;
+
+        if (currentIndex6 < 0) {
+            currentIndex6 = 0;
+        } else if (currentIndex6 > maxIndex6) {
+            currentIndex6 = maxIndex6;
+        }
+
+        imageContainer6.style.transform = `translateX(-${currentIndex6 * 1766}px)`;
+
+        prevButton6.disabled = currentIndex6 === 0; 
+        nextButton6.disabled = currentIndex6 >= maxClicks; 
+    }
+
+    function handlePrevClick6() {
+        if (prevClickCount6 < maxClicks6) {
+            currentIndex6--;
+            prevClickCount6++;
+            nextClickCount6 = Math.max(0, nextClickCount6 - 1);
+            updateSlider6();
+        }
+    }
+
+    function handleNextClick6() {
+        if (nextClickCount6 < maxClicks6) {
+            currentIndex6++;
+            nextClickCount6++;
+            prevClickCount6 = Math.max(0, prevClickCount6 - 1);
+            updateSlider6();
+        }
+    }
+
+    prevButton6.addEventListener('click', handlePrevClick6);
+    nextButton6.addEventListener('click', handleNextClick6);
+
+    function initializeSlider6() {
+        imageList6.forEach(imageSrc => {
+            const img6 = document.createElement('img');
+            img6.src = imageSrc;
+            imageContainer6.appendChild(img6);
+        });
+        updateSlider6();
+    }
+
+    initializeSlider6();
+
+
+
+        const imageList7 = [
+            './포트이미지/변환된것/개본1.png',
+            './포트이미지/변환된것/개본2.png',
+            './포트이미지/변환된것/개본3.png',
+            './포트이미지/변환된것/개본4.png',
+            './포트이미지/변환된것/개본5.png',
+            './포트이미지/변환된것/개본6.png',
+            './포트이미지/변환된것/개본7.png',
+            './포트이미지/변환된것/개본8.png',
+            './포트이미지/변환된것/개본9.png',
+            './포트이미지/변환된것/개본10.png',
+            './포트이미지/변환된것/개본11.png',
+            './포트이미지/변환된것/개본12.png',
+            './포트이미지/변환된것/개본13.png',
+            './포트이미지/변환된것/개본14.png',
+            './포트이미지/변환된것/개본15.png',
+            './포트이미지/변환된것/개본16.png',
+            './포트이미지/변환된것/개본17.png',
+            './포트이미지/변환된것/개본18.png',
+            './포트이미지/변환된것/개본19.png',
+            './포트이미지/변환된것/개본20.png',
+            './포트이미지/변환된것/개본21.png',
+            './포트이미지/변환된것/개본22.png',
+            './포트이미지/변환된것/개본23.png',
+            './포트이미지/변환된것/개본24.png',
+            './포트이미지/변환된것/개본25.png',
+            './포트이미지/변환된것/개본26.png',
+            './포트이미지/변환된것/개본27.png',
+            './포트이미지/변환된것/개본28.png',
+            './포트이미지/변환된것/개본29.png',
+            './포트이미지/변환된것/개본30.png',
+        ];
+
+        const imageContainer7 = document.getElementById('imageContainer7');
+    const prevButton7 = document.getElementById('prevButton7');
+    const nextButton7 = document.getElementById('nextButton7');
+
+    let currentIndex7 = 0;
+    const visibleImages7 = 4; 
+    const maxClicks7 = 5; 
+    let prevClickCount7 = 0;
+    let nextClickCount7 = 0;
+
+    function updateSlider7() {
+        const totalImages7 = imageList7.length;
+        const maxIndex7 = totalImages7 - visibleImages7;
+
+        if (currentIndex7 < 0) {
+            currentIndex7 = 0;
+        } else if (currentIndex7 > maxIndex7) {
+            currentIndex7 = maxIndex7;
+        }
+
+        imageContainer7.style.transform = `translateX(-${currentIndex7 * 1766}px)`;
+
+        prevButton7.disabled = currentIndex7 === 0;
+        nextButton7.disabled = currentIndex7 >= maxClicks; 
+    }
+
+    function handlePrevClick7() {
+        if (prevClickCount7 < maxClicks7) {
+            currentIndex7--;
+            prevClickCount7++;
+            nextClickCount7 = Math.max(0, nextClickCount7 - 1);
+            updateSlider7();
+        }
+    }
+
+    function handleNextClick7() {
+        if (nextClickCount7 < maxClicks7) {
+            currentIndex7++;
+            nextClickCount7++;
+            prevClickCount7 = Math.max(0, prevClickCount7 - 1);
+            updateSlider7();
+        }
+    }
+
+    prevButton7.addEventListener('click', handlePrevClick7);
+    nextButton7.addEventListener('click', handleNextClick7);
+
+    function initializeSlider7() {
+        imageList7.forEach(imageSrc => {
+            const img7 = document.createElement('img');
+            img7.src = imageSrc;
+            imageContainer7.appendChild(img7);
+        });
+        updateSlider7();
+    }
+
+    initializeSlider7();
+
+
+        const imageList8 = [
+            './포트이미지/변환된것/피본1.png',
+            './포트이미지/변환된것/피본2.png',
+            './포트이미지/변환된것/피본3.png',
+            './포트이미지/변환된것/피본4.png',
+            './포트이미지/변환된것/피본5.png',
+            './포트이미지/변환된것/피본6.png',
+            './포트이미지/변환된것/피본7.png',
+            './포트이미지/변환된것/피본8.png',
+            './포트이미지/변환된것/피본9.png',
+            './포트이미지/변환된것/피본10.png',
+            './포트이미지/변환된것/피본11.png',
+            './포트이미지/변환된것/피본12.png',
+            './포트이미지/변환된것/피본13.png',
+            './포트이미지/변환된것/피본14.png',
+            './포트이미지/변환된것/피본15.png',
+            './포트이미지/변환된것/피본16.png',
+            './포트이미지/변환된것/피본17.png',
+            './포트이미지/변환된것/피본18.png',
+            './포트이미지/변환된것/피본19.png',
+            './포트이미지/변환된것/피본20.png',
+            './포트이미지/변환된것/피본21.png',
+            './포트이미지/변환된것/피본22.png',
+            './포트이미지/변환된것/피본23.png',
+            './포트이미지/변환된것/피본24.png',
+            './포트이미지/변환된것/피본25.png',
+            './포트이미지/변환된것/피본26.png',
+            './포트이미지/변환된것/피본27.png',
+            './포트이미지/변환된것/피본28.png',
+            './포트이미지/변환된것/피본29.png',
+            './포트이미지/변환된것/피본30.png',
+        ];
+
+        const imageContainer8 = document.getElementById('imageContainer8');
+    const prevButton8 = document.getElementById('prevButton8');
+    const nextButton8 = document.getElementById('nextButton8');
+
+    let currentIndex8 = 0;
+    const visibleImages8 = 4;
+    const maxClicks8 = 5; 
+    let prevClickCount8 = 0;
+    let nextClickCount8 = 0;
+
+    function updateSlider8() {
+        const totalImages8 = imageList8.length;
+        const maxIndex8 = totalImages8 - visibleImages8;
+
+        if (currentIndex8 < 0) {
+            currentIndex8 = 0;
+        } else if (currentIndex8 > maxIndex8) {
+            currentIndex8 = maxIndex8;
+        }
+
+        imageContainer8.style.transform = `translateX(-${currentIndex8 * 1766}px)`;
+
+        prevButton8.disabled = currentIndex8 === 0; 
+        nextButton8.disabled = currentIndex8 >= maxClicks; 
+    }
+
+    function handlePrevClick8() {
+        if (prevClickCount8 < maxClicks8) {
+            currentIndex8--;
+            prevClickCount8++;
+            nextClickCount8 = Math.max(0, nextClickCount8 - 1);
+            updateSlider8();
+        }
+    }
+
+    function handleNextClick8() {
+        if (nextClickCount8 < maxClicks8) {
+            currentIndex8++;
+            nextClickCount8++;
+            prevClickCount8 = Math.max(0, prevClickCount8 - 1);
+            updateSlider8();
+        }
+    }
+
+    prevButton8.addEventListener('click', handlePrevClick8);
+    nextButton8.addEventListener('click', handleNextClick8);
+
+    function initializeSlider8() {
+        imageList8.forEach(imageSrc => {
+            const img8 = document.createElement('img');
+            img8.src = imageSrc;
+            imageContainer8.appendChild(img8);
+        });
+        updateSlider8();
+    }
+
+    initializeSlider8();
+
+
+        const imageList9 = [
+            './포트이미지/변환된것/디본1.png',
+            './포트이미지/변환된것/디본2.png',
+            './포트이미지/변환된것/디본3.png',
+            './포트이미지/변환된것/디본4.png',
+            './포트이미지/변환된것/디본5.png',
+            './포트이미지/변환된것/디본6.png',
+            './포트이미지/변환된것/디본7.png',
+            './포트이미지/변환된것/디본8.png',
+            './포트이미지/변환된것/디본9.png',
+            './포트이미지/변환된것/디본10.png',
+            './포트이미지/변환된것/디본11.png',
+            './포트이미지/변환된것/디본12.png',
+            './포트이미지/변환된것/디본13.png',
+            './포트이미지/변환된것/디본14.png',
+            './포트이미지/변환된것/디본15.png',
+            './포트이미지/변환된것/디본16.png',
+            './포트이미지/변환된것/디본17.png',
+            './포트이미지/변환된것/디본18.png',
+            './포트이미지/변환된것/디본19.png',
+            './포트이미지/변환된것/디본20.png',
+            './포트이미지/변환된것/디본21.png',
+            './포트이미지/변환된것/디본22.png',
+            './포트이미지/변환된것/디본23.png',
+            './포트이미지/변환된것/디본24.png',
+            './포트이미지/변환된것/디본25.png',
+            './포트이미지/변환된것/디본26.png',
+            './포트이미지/변환된것/디본27.png',
+            './포트이미지/변환된것/디본28.png',
+            './포트이미지/변환된것/디본29.png',
+            './포트이미지/변환된것/디본30.png',
+        ];
+
+        const imageContainer9 = document.getElementById('imageContainer9');
+    const prevButton9 = document.getElementById('prevButton9');
+    const nextButton9 = document.getElementById('nextButton9');
+
+    let currentIndex9 = 0;
+    const visibleImages9 = 4; 
+    const maxClicks9 = 5; 
+    let prevClickCount9 = 0;
+    let nextClickCount9 = 0;
+
+    function updateSlider9() {
+        const totalImages9 = imageList9.length;
+        const maxIndex9 = totalImages9 - visibleImages9;
+
+        if (currentIndex9 < 0) {
+            currentIndex9 = 0;
+        } else if (currentIndex9 > maxIndex9) {
+            currentIndex9 = maxIndex9;
+        }
+
+        imageContainer9.style.transform = `translateX(-${currentIndex9 * 1766}px)`;
+
+        prevButton9.disabled = currentIndex9 === 0; 
+        nextButton9.disabled = currentIndex9 >= maxClicks; 
+    }
+
+    function handlePrevClick9() {
+        if (prevClickCount9 < maxClicks9) {
+            currentIndex9--;
+            prevClickCount9++;
+            nextClickCount9 = Math.max(0, nextClickCount9 - 1);
+            updateSlider9();
+        }
+    }
+
+    function handleNextClick9() {
+        if (nextClickCount9 < maxClicks9) {
+            currentIndex9++;
+            nextClickCount9++;
+            prevClickCount9 = Math.max(0, prevClickCount9 - 1);
+            updateSlider9();
+        }
+    }
+
+    prevButton9.addEventListener('click', handlePrevClick9);
+    nextButton9.addEventListener('click', handleNextClick9);
+
+    function initializeSlider9() {
+        imageList9.forEach(imageSrc => {
+            const img9 = document.createElement('img');
+            img9.src = imageSrc;
+            imageContainer9.appendChild(img9);
+        });
+        updateSlider9();
+    }
+
+    initializeSlider9();
+
+
+        const imageList10 = [
+            './포트이미지/변환된것/지본1.png',
+            './포트이미지/변환된것/지본2.png',
+            './포트이미지/변환된것/지본3.png',
+            './포트이미지/변환된것/지본4.png',
+            './포트이미지/변환된것/지본5.png',
+            './포트이미지/변환된것/지본6.png',
+            './포트이미지/변환된것/지본7.png',
+            './포트이미지/변환된것/지본8.png',
+            './포트이미지/변환된것/지본9.png',
+            './포트이미지/변환된것/지본10.png',
+            './포트이미지/변환된것/지본11.png',
+            './포트이미지/변환된것/지본12.png',
+            './포트이미지/변환된것/지본13.png',
+            './포트이미지/변환된것/지본14.png',
+            './포트이미지/변환된것/지본15.png',
+            './포트이미지/변환된것/지본16.png',
+            './포트이미지/변환된것/지본17.png',
+            './포트이미지/변환된것/지본18.png',
+            './포트이미지/변환된것/지본19.png',
+            './포트이미지/변환된것/지본20.png',
+            './포트이미지/변환된것/지본21.png',
+            './포트이미지/변환된것/지본22.png',
+            './포트이미지/변환된것/지본23.png',
+            './포트이미지/변환된것/지본24.png',
+            './포트이미지/변환된것/지본25.png',
+            './포트이미지/변환된것/지본26.png',
+            './포트이미지/변환된것/지본27.png',
+            './포트이미지/변환된것/지본28.png',
+            './포트이미지/변환된것/지본29.png',
+            './포트이미지/변환된것/지본30.png',
+        ];
+
+        const imageContainer10 = document.getElementById('imageContainer10');
+    const prevButton10 = document.getElementById('prevButton10');
+    const nextButton10 = document.getElementById('nextButton10');
+
+    let currentIndex10 = 0;
+    const visibleImages10 = 4;
+    const maxClicks10 = 5; 
+    let prevClickCount10 = 0;
+    let nextClickCount10 = 0;
+
+    function updateSlider10() {
+        const totalImages10 = imageList10.length;
+        const maxIndex10 = totalImages10 - visibleImages10;
+
+        if (currentIndex10 < 0) {
+            currentIndex10 = 0;
+        } else if (currentIndex10 > maxIndex10) {
+            currentIndex10 = maxIndex10;
+        }
+
+        imageContainer10.style.transform = `translateX(-${currentIndex10 * 1766}px)`;
+
+        prevButton10.disabled = currentIndex10 === 0; 
+        nextButton10.disabled = currentIndex10 >= maxClicks; 
+    }
+
+    function handlePrevClick10() {
+        if (prevClickCount10 < maxClicks10) {
+            currentIndex10--;
+            prevClickCount10++;
+            nextClickCount10 = Math.max(0, nextClickCount10 - 1);
+            updateSlider10();
+        }
+    }
+
+    function handleNextClick10() {
+        if (nextClickCount10 < maxClicks10) {
+            currentIndex10++;
+            nextClickCount10++;
+            prevClickCount10 = Math.max(0, prevClickCount10 - 1);
+            updateSlider10();
+        }
+    }
+
+    prevButton10.addEventListener('click', handlePrevClick10);
+    nextButton10.addEventListener('click', handleNextClick10);
+
+    function initializeSlider10() {
+        imageList10.forEach(imageSrc => {
+            const img10 = document.createElement('img');
+            img10.src = imageSrc;
+            imageContainer10.appendChild(img10);
+        });
+        updateSlider10();
+    }
+
+    initializeSlider10();
+
+
+        const imageList11 = [
+            './포트이미지/변환된것/기본2.png',
+            './포트이미지/변환된것/비본1.png',
+            './포트이미지/변환된것/비본2.png',
+            './포트이미지/변환된것/비본3.png',
+            './포트이미지/변환된것/비본4.png',
+            './포트이미지/변환된것/비본5.png',
+            './포트이미지/변환된것/비본6.png',
+            './포트이미지/변환된것/비본7.png',
+            './포트이미지/변환된것/비본8.png',
+            './포트이미지/변환된것/비본10.png',
+            './포트이미지/변환된것/비본11.png',
+            './포트이미지/변환된것/비본12.png',
+            './포트이미지/변환된것/비본13.png',
+            './포트이미지/변환된것/비본14.png',
+            './포트이미지/변환된것/비본15.png',
+            './포트이미지/변환된것/비본16.png',
+            './포트이미지/변환된것/비본17.png',
+            './포트이미지/변환된것/비본18.png',
+            './포트이미지/변환된것/비본19.png',
+            './포트이미지/변환된것/비본20.png',
+            './포트이미지/변환된것/비본21.png',
+            './포트이미지/변환된것/비본22.png',
+            './포트이미지/변환된것/비본23.png',
+            './포트이미지/변환된것/비본24.png',
+            './포트이미지/변환된것/비본25.png',
+            './포트이미지/변환된것/비본26.png',
+            './포트이미지/변환된것/비본27.png',
+            './포트이미지/변환된것/비본28.png',
+            './포트이미지/변환된것/비본29.png',
+            './포트이미지/변환된것/비본30.png',
+        ];
+
+        const imageContainer11 = document.getElementById('imageContainer11');
+    const prevButton11 = document.getElementById('prevButton11');
+    const nextButton11 = document.getElementById('nextButton11');
+
+    let currentIndex11 = 0;
+    const visibleImages11 = 4;
+    const maxClicks11 = 5; 
+    let prevClickCount11 = 0;
+    let nextClickCount11 = 0;
+
+    function updateSlider11() {
+        const totalImages11 = imageList11.length;
+        const maxIndex11 = totalImages11 - visibleImages11;
+
+        if (currentIndex11 < 0) {
+            currentIndex11 = 0;
+        } else if (currentIndex11 > maxIndex11) {
+            currentIndex11 = maxIndex11;
+        }
+
+        imageContainer11.style.transform = `translateX(-${currentIndex11 * 1766}px)`;
+        prevButton11.disabled = currentIndex11 === 0; 
+        nextButton11.disabled = currentIndex11 >= maxClicks; 
+    }
+
+    function handlePrevClick11() {
+        if (prevClickCount11 < maxClicks11) {
+            currentIndex11--;
+            prevClickCount11++;
+            nextClickCount11 = Math.max(0, nextClickCount11 - 1);
+            updateSlider11();
+        }
+    }
+
+    function handleNextClick11() {
+        if (nextClickCount11 < maxClicks11) {
+            currentIndex11++;
+            nextClickCount11++;
+            prevClickCount11 = Math.max(0, prevClickCount11 - 1);
+            updateSlider11();
+        }
+    }
+
+    prevButton11.addEventListener('click', handlePrevClick11);
+    nextButton11.addEventListener('click', handleNextClick11);
+
+    function initializeSlider11() {
+        imageList11.forEach(imageSrc => {
+            const img11 = document.createElement('img');
+            img11.src = imageSrc;
+            imageContainer11.appendChild(img11);
+        });
+        updateSlider11();
+    }
+
+    initializeSlider11();
+
+        const imageContainer12 = document.getElementById('imageContainer12');
+        let currentImageIndex12 = 0;
+        const imageList12 = [
+            './포트이미지/변환된것/바보1.png',
+            './포트이미지/변환된것/바보2.png',
+            './포트이미지/변환된것/바보3.png',
+            './포트이미지/변환된것/바보4.png',
+            './포트이미지/변환된것/바보5.png',
+            './포트이미지/변환된것/바보6.png',
+            './포트이미지/변환된것/바보7.png',
+            './포트이미지/변환된것/바보8.png',
+            './포트이미지/변환된것/바보9.png',
+            './포트이미지/변환된것/바보10.png',
+            './포트이미지/변환된것/바보11.png',
+            './포트이미지/변환된것/바보12.png',
+            './포트이미지/변환된것/바보13.png',
+            './포트이미지/변환된것/바보14.png',
+            './포트이미지/변환된것/바보15.png',
+            './포트이미지/변환된것/바보16.png',
+            './포트이미지/변환된것/바보17.png',
+            './포트이미지/변환된것/바보18.png',
+            './포트이미지/변환된것/바보19.png',
+            './포트이미지/변환된것/바보20.png',
+            './포트이미지/변환된것/바보21.png',
+            './포트이미지/변환된것/바보22.png',
+            './포트이미지/변환된것/바보23.png',
+            './포트이미지/변환된것/바보24.png',
+            './포트이미지/변환된것/바보25.png',
+            './포트이미지/변환된것/바보26.png',
+            './포트이미지/변환된것/바보27.png',
+            './포트이미지/변환된것/바보28.png',
+            './포트이미지/변환된것/바보29.png',
+            './포트이미지/변환된것/바보30.png',
+        ];
+
+        const maxButtonClicks12 = 5;
+        let previousClickCount12 = 0;
+        let nextClickCounts12 = 0;
+
+        function initializeImages12() {
+            imageList12.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer12.appendChild(img);
+            });
+        }
+
+        function refreshSlider12() {
+            const totalImagesCount12 = imageList12.length;
+            const visibleImagesCount12 = 8;
+            const maxImageIndex12 = totalImagesCount12 - visibleImagesCount12;
+
+            if (currentImageIndex12 < 0) {
+                currentImageIndex12 = 0;
+            } else if (currentImageIndex12 > maxImageIndex12) {
+                currentImageIndex12 = maxImageIndex12;
+            }
+
+            imageContainer12.style.transform = `translateX(-${currentImageIndex12 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick12() {
+            if (previousClickCount12 < maxButtonClicks12) {
+                currentImageIndex12--;
+                previousClickCount12++;
+                nextClickCounts12 = Math.max(0, nextClickCounts12 - 1);
+                refreshSlider12();
+            }
+        }
+
+        function onNextButtonClick12() {
+            if (nextClickCounts12 < maxButtonClicks12) {
+                currentImageIndex12++;
+                nextClickCounts12++;
+                previousClickCount12 = Math.max(0, previousClickCount12 - 1);
+                refreshSlider12();
+            }
+        }
+
+        document.getElementById('prevButton12').addEventListener('click', onPreviousButtonClick12);
+        document.getElementById('nextButton12').addEventListener('click', onNextButtonClick12);
+
+        initializeImages12();
+
+        const imageContainer13 = document.getElementById('imageContainer13');
+        let currentImageIndex13 = 0;
+        const imageList13 = [
+            './포트이미지/변환된것/q1.png',
+            './포트이미지/변환된것/q2.png',
+            './포트이미지/변환된것/q3.png',
+            './포트이미지/변환된것/q4.png',
+            './포트이미지/변환된것/q5.png',
+            './포트이미지/변환된것/q6.png',
+            './포트이미지/변환된것/q7.png',
+            './포트이미지/변환된것/q8.png',
+            './포트이미지/변환된것/q9.png',
+            './포트이미지/변환된것/q10.png',
+            './포트이미지/변환된것/q11.png',
+            './포트이미지/변환된것/q12.png',
+            './포트이미지/변환된것/q13.png',
+            './포트이미지/변환된것/q14.png',
+            './포트이미지/변환된것/q15.png',
+            './포트이미지/변환된것/q16.png',
+            './포트이미지/변환된것/q17.png',
+            './포트이미지/변환된것/q18.png',
+            './포트이미지/변환된것/q19.png',
+            './포트이미지/변환된것/q20.png',
+            './포트이미지/변환된것/q21.png',
+            './포트이미지/변환된것/q22.png',
+            './포트이미지/변환된것/q23.png',
+            './포트이미지/변환된것/q24.png',
+            './포트이미지/변환된것/q25.png',
+            './포트이미지/변환된것/q26.png',
+            './포트이미지/변환된것/q27.png',
+            './포트이미지/변환된것/q28.png',
+            './포트이미지/변환된것/q29.png',
+            './포트이미지/변환된것/q30.png',
+        ];
+
+        const maxButtonClicks13 = 5;
+        let previousClickCount13 = 0;
+        let nextClickCounts13 = 0;
+
+        function initializeImages13() {
+            imageList13.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer13.appendChild(img);
+            });
+        }
+
+        function refreshSlider13() {
+            const totalImagesCount13 = imageList13.length;
+            const visibleImagesCount13 = 8;
+            const maxImageIndex13 = totalImagesCount13 - visibleImagesCount13;
+
+            if (currentImageIndex13 < 0) {
+                currentImageIndex13 = 0;
+            } else if (currentImageIndex13 > maxImageIndex13) {
+                currentImageIndex13 = maxImageIndex13;
+            }
+
+            imageContainer13.style.transform = `translateX(-${currentImageIndex13 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick13() {
+            if (previousClickCount13 < maxButtonClicks13) {
+                currentImageIndex13--;
+                previousClickCount13++;
+                nextClickCounts13 = Math.max(0, nextClickCounts13 - 1);
+                refreshSlider13();
+            }
+        }
+
+        function onNextButtonClick13() {
+            if (nextClickCounts13 < maxButtonClicks13) {
+                currentImageIndex13++;
+                nextClickCounts13++;
+                previousClickCount13 = Math.max(0, previousClickCount13 - 1);
+                refreshSlider13();
+            }
+        }
+
+        document.getElementById('prevButton13').addEventListener('click', onPreviousButtonClick13);
+        document.getElementById('nextButton13').addEventListener('click', onNextButtonClick13);
+
+        initializeImages13();
+
+        const imageContainer14 = document.getElementById('imageContainer14');
+        let currentImageIndex14 = 0;
+        const imageList14 = [
+            './포트이미지/변환된것/a1.png',
+            './포트이미지/변환된것/a2.png',
+            './포트이미지/변환된것/a3.png',
+            './포트이미지/변환된것/a4.png',
+            './포트이미지/변환된것/a5.png',
+            './포트이미지/변환된것/a6.png',
+            './포트이미지/변환된것/a7.png',
+            './포트이미지/변환된것/a8.png',
+            './포트이미지/변환된것/a9.png',
+            './포트이미지/변환된것/a10.png',
+            './포트이미지/변환된것/a11.png',
+            './포트이미지/변환된것/a12.png',
+            './포트이미지/변환된것/a13.png',
+            './포트이미지/변환된것/a14.png',
+            './포트이미지/변환된것/a15.png',
+            './포트이미지/변환된것/a16.png',
+            './포트이미지/변환된것/a17.png',
+            './포트이미지/변환된것/a18.png',
+            './포트이미지/변환된것/a19.png',
+            './포트이미지/변환된것/a20.png',
+            './포트이미지/변환된것/a21.png',
+            './포트이미지/변환된것/a22.png',
+            './포트이미지/변환된것/a23.png',
+            './포트이미지/변환된것/a24.png',
+            './포트이미지/변환된것/a25.png',
+            './포트이미지/변환된것/a26.png',
+            './포트이미지/변환된것/a27.png',
+            './포트이미지/변환된것/a28.png',
+            './포트이미지/변환된것/a29.png',
+            './포트이미지/변환된것/a30.png',
+        ];
+
+        const maxButtonClicks14 = 5;
+        let previousClickCount14 = 0;
+        let nextClickCounts14 = 0;
+
+        function initializeImages14() {
+            imageList14.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer14.appendChild(img);
+            });
+        }
+
+        function refreshSlider14() {
+            const totalImagesCount14 = imageList14.length;
+            const visibleImagesCount14 = 8;
+            const maxImageIndex14 = totalImagesCount14 - visibleImagesCount14;
+
+            if (currentImageIndex14 < 0) {
+                currentImageIndex14 = 0;
+            } else if (currentImageIndex14 > maxImageIndex14) {
+                currentImageIndex14 = maxImageIndex14;
+            }
+
+            imageContainer14.style.transform = `translateX(-${currentImageIndex14 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick14() {
+            if (previousClickCount14 < maxButtonClicks14) {
+                currentImageIndex14--;
+                previousClickCount14++;
+                nextClickCounts14 = Math.max(0, nextClickCounts14 - 1);
+                refreshSlider14();
+            }
+        }
+
+        function onNextButtonClick14() {
+            if (nextClickCounts14 < maxButtonClicks14) {
+                currentImageIndex14++;
+                nextClickCounts14++;
+                previousClickCount14 = Math.max(0, previousClickCount14 - 1);
+                refreshSlider14();
+            }
+        }
+
+        document.getElementById('prevButton14').addEventListener('click', onPreviousButtonClick14);
+        document.getElementById('nextButton14').addEventListener('click', onNextButtonClick14);
+
+        initializeImages14();
+
+        const imageContainer15 = document.getElementById('imageContainer15');
+        let currentImageIndex15 = 0;
+        const imageList15 = [
+            './포트이미지/변환된것/f1.png',
+            './포트이미지/변환된것/f2.png',
+            './포트이미지/변환된것/f3.png',
+            './포트이미지/변환된것/f4.png',
+            './포트이미지/변환된것/f5.png',
+            './포트이미지/변환된것/f6.png',
+            './포트이미지/변환된것/f7.png',
+            './포트이미지/변환된것/f8.png',
+            './포트이미지/변환된것/f9.png',
+            './포트이미지/변환된것/f10.png',
+            './포트이미지/변환된것/f11.png',
+            './포트이미지/변환된것/f12.png',
+            './포트이미지/변환된것/f13.png',
+            './포트이미지/변환된것/f14.png',
+            './포트이미지/변환된것/f15.png',
+            './포트이미지/변환된것/f16.png',
+            './포트이미지/변환된것/f17.png',
+            './포트이미지/변환된것/f18.png',
+            './포트이미지/변환된것/f19.png',
+            './포트이미지/변환된것/f20.png',
+            './포트이미지/변환된것/f21.png',
+            './포트이미지/변환된것/f22.png',
+            './포트이미지/변환된것/f23.png',
+            './포트이미지/변환된것/f24.png',
+            './포트이미지/변환된것/f25.png',
+            './포트이미지/변환된것/f26.png',
+            './포트이미지/변환된것/f27.png',
+            './포트이미지/변환된것/f28.png',
+            './포트이미지/변환된것/f29.png',
+            './포트이미지/변환된것/f30.png',
+        ];
+
+        const maxButtonClicks15 = 5;
+        let previousClickCount15 = 0;
+        let nextClickCounts15 = 0;
+
+        function initializeImages15() {
+            imageList15.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer15.appendChild(img);
+            });
+        }
+
+        function refreshSlider15() {
+            const totalImagesCount15 = imageList15.length;
+            const visibleImagesCount15 = 8;
+            const maxImageIndex15 = totalImagesCount15 - visibleImagesCount15;
+
+            if (currentImageIndex15 < 0) {
+                currentImageIndex15 = 0;
+            } else if (currentImageIndex15 > maxImageIndex15) {
+                currentImageIndex15 = maxImageIndex15;
+            }
+
+            imageContainer15.style.transform = `translateX(-${currentImageIndex15 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick15() {
+            if (previousClickCount15 < maxButtonClicks15) {
+                currentImageIndex15--;
+                previousClickCount15++;
+                nextClickCounts15 = Math.max(0, nextClickCounts15 - 1);
+                refreshSlider15();
+            }
+        }
+
+        function onNextButtonClick15() {
+            if (nextClickCounts15 < maxButtonClicks15) {
+                currentImageIndex15++;
+                nextClickCounts15++;
+                previousClickCount15 = Math.max(0, previousClickCount15 - 1);
+                refreshSlider15();
+            }
+        }
+
+        document.getElementById('prevButton15').addEventListener('click', onPreviousButtonClick15);
+        document.getElementById('nextButton15').addEventListener('click', onNextButtonClick15);
+
+        initializeImages15();
+
+        const imageContainer16 = document.getElementById('imageContainer16');
+        let currentImageIndex16 = 0;
+        const imageList16 = [
+            './포트이미지/변환된것/e1.png',
+            './포트이미지/변환된것/e2.png',
+            './포트이미지/변환된것/e3.png',
+            './포트이미지/변환된것/e4.png',
+            './포트이미지/변환된것/e5.png',
+            './포트이미지/변환된것/e6.png',
+            './포트이미지/변환된것/e7.png',
+            './포트이미지/변환된것/e8.png',
+            './포트이미지/변환된것/e9.png',
+            './포트이미지/변환된것/e10.png',
+            './포트이미지/변환된것/e11.png',
+            './포트이미지/변환된것/e12.png',
+            './포트이미지/변환된것/e13.png',
+            './포트이미지/변환된것/e14.png',
+            './포트이미지/변환된것/e15.png',
+            './포트이미지/변환된것/e16.png',
+            './포트이미지/변환된것/e17.png',
+            './포트이미지/변환된것/e18.png',
+            './포트이미지/변환된것/e19.png',
+            './포트이미지/변환된것/e20.png',
+            './포트이미지/변환된것/e21.png',
+            './포트이미지/변환된것/e22.png',
+            './포트이미지/변환된것/e23.png',
+            './포트이미지/변환된것/e24.png',
+            './포트이미지/변환된것/e25.png',
+            './포트이미지/변환된것/e26.png',
+            './포트이미지/변환된것/e27.png',
+            './포트이미지/변환된것/e28.png',
+            './포트이미지/변환된것/e29.png',
+            './포트이미지/변환된것/e30.png',
+        ];
+
+        const maxButtonClicks16 = 5;
+        let previousClickCount16 = 0;
+        let nextClickCounts16 = 0;
+
+        function initializeImages16() {
+            imageList16.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer16.appendChild(img);
+            });
+        }
+
+        function refreshSlider16() {
+            const totalImagesCount16 = imageList16.length;
+            const visibleImagesCount16 = 8;
+            const maxImageIndex16 = totalImagesCount16 - visibleImagesCount16;
+
+            if (currentImageIndex16 < 0) {
+                currentImageIndex16 = 0;
+            } else if (currentImageIndex16 > maxImageIndex16) {
+                currentImageIndex16 = maxImageIndex16;
+            }
+
+            imageContainer16.style.transform = `translateX(-${currentImageIndex16 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick16() {
+            if (previousClickCount16 < maxButtonClicks16) {
+                currentImageIndex16--;
+                previousClickCount16++;
+                nextClickCounts16 = Math.max(0, nextClickCounts16 - 1);
+                refreshSlider16();
+            }
+        }
+
+        function onNextButtonClick16() {
+            if (nextClickCounts16 < maxButtonClicks16) {
+                currentImageIndex16++;
+                nextClickCounts16++;
+                previousClickCount16 = Math.max(0, previousClickCount16 - 1);
+                refreshSlider16();
+            }
+        }
+
+        document.getElementById('prevButton16').addEventListener('click', onPreviousButtonClick16);
+        document.getElementById('nextButton16').addEventListener('click', onNextButtonClick16);
+
+        initializeImages16();
+
+        const imageContainer17 = document.getElementById('imageContainer17');
+        let currentImageIndex17 = 0;
+        const imageList17 = [
+            './포트이미지/변환된것/g1.png',
+            './포트이미지/변환된것/g2.png',
+            './포트이미지/변환된것/g3.png',
+            './포트이미지/변환된것/g4.png',
+            './포트이미지/변환된것/g5.png',
+            './포트이미지/변환된것/g6.png',
+            './포트이미지/변환된것/g7.png',
+            './포트이미지/변환된것/g8.png',
+            './포트이미지/변환된것/g9.png',
+            './포트이미지/변환된것/g10.png',
+            './포트이미지/변환된것/g11.png',
+            './포트이미지/변환된것/g12.png',
+            './포트이미지/변환된것/g13.png',
+            './포트이미지/변환된것/g14.png',
+            './포트이미지/변환된것/g15.png',
+            './포트이미지/변환된것/g16.png',
+            './포트이미지/변환된것/g17.png',
+            './포트이미지/변환된것/g18.png',
+            './포트이미지/변환된것/g19.png',
+            './포트이미지/변환된것/g20.png',
+            './포트이미지/변환된것/g21.png',
+            './포트이미지/변환된것/g22.png',
+            './포트이미지/변환된것/g23.png',
+            './포트이미지/변환된것/g24.png',
+            './포트이미지/변환된것/g25.png',
+            './포트이미지/변환된것/g26.png',
+            './포트이미지/변환된것/g27.png',
+            './포트이미지/변환된것/g28.png',
+            './포트이미지/변환된것/g29.png',
+            './포트이미지/변환된것/g30.png',
+        ];
+
+        const maxButtonClicks17 = 5;
+        let previousClickCount17 = 0;
+        let nextClickCounts17 = 0;
+
+        function initializeImages17() {
+            imageList17.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer17.appendChild(img);
+            });
+        }
+
+        function refreshSlider17() {
+            const totalImagesCount17 = imageList17.length;
+            const visibleImagesCount17 = 8;
+            const maxImageIndex17 = totalImagesCount17 - visibleImagesCount17;
+
+            if (currentImageIndex17 < 0) {
+                currentImageIndex17 = 0;
+            } else if (currentImageIndex17 > maxImageIndex17) {
+                currentImageIndex17 = maxImageIndex17;
+            }
+
+            imageContainer17.style.transform = `translateX(-${currentImageIndex17 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick17() {
+            if (previousClickCount17 < maxButtonClicks17) {
+                currentImageIndex17--;
+                previousClickCount17++;
+                nextClickCounts17 = Math.max(0, nextClickCounts17 - 1);
+                refreshSlider17();
+            }
+        }
+
+        function onNextButtonClick17() {
+            if (nextClickCounts17 < maxButtonClicks17) {
+                currentImageIndex17++;
+                nextClickCounts17++;
+                previousClickCount17 = Math.max(0, previousClickCount17 - 1);
+                refreshSlider17();
+            }
+        }
+
+        document.getElementById('prevButton17').addEventListener('click', onPreviousButtonClick17);
+        document.getElementById('nextButton17').addEventListener('click', onNextButtonClick17);
+
+        initializeImages17();
+
+        const imageContainer18 = document.getElementById('imageContainer18');
+        let currentImageIndex18 = 0;
+        const imageList18 = [
+            './포트이미지/변환된것/g30.png',
+            './포트이미지/변환된것/g29.png',
+            './포트이미지/변환된것/g28.png',
+            './포트이미지/변환된것/g27.png',
+            './포트이미지/변환된것/g26.png',
+            './포트이미지/변환된것/g25.png',
+            './포트이미지/변환된것/g24.png',
+            './포트이미지/변환된것/g23.png',
+            './포트이미지/변환된것/g22.png',
+            './포트이미지/변환된것/g21.png',
+            './포트이미지/변환된것/g1.png',
+            './포트이미지/변환된것/g2.png',
+            './포트이미지/변환된것/g3.png',
+            './포트이미지/변환된것/g4.png',
+            './포트이미지/변환된것/g5.png',
+            './포트이미지/변환된것/g6.png',
+            './포트이미지/변환된것/g7.png',
+            './포트이미지/변환된것/g8.png',
+            './포트이미지/변환된것/g9.png',
+            './포트이미지/변환된것/g10.png',
+            './포트이미지/변환된것/g11.png',
+            './포트이미지/변환된것/g12.png',
+            './포트이미지/변환된것/g13.png',
+            './포트이미지/변환된것/g14.png',
+            './포트이미지/변환된것/g15.png',
+            './포트이미지/변환된것/g16.png',
+            './포트이미지/변환된것/g17.png',
+            './포트이미지/변환된것/g18.png',
+            './포트이미지/변환된것/g19.png',
+            './포트이미지/변환된것/g10.png',
+        ];
+
+        const maxButtonClicks18 = 5;
+        let previousClickCount18 = 0;
+        let nextClickCounts18 = 0;
+
+        function initializeImages18() {
+            imageList18.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer18.appendChild(img);
+            });
+        }
+
+        function refreshSlider18() {
+            const totalImagesCount18 = imageList18.length;
+            const visibleImagesCount18 = 8;
+            const maxImageIndex18 = totalImagesCount18 - visibleImagesCount18;
+
+            if (currentImageIndex18 < 0) {
+                currentImageIndex18 = 0;
+            } else if (currentImageIndex18 > maxImageIndex18) {
+                currentImageIndex18 = maxImageIndex18;
+            }
+
+            imageContainer18.style.transform = `translateX(-${currentImageIndex18 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick18() {
+            if (previousClickCount18 < maxButtonClicks18) {
+                currentImageIndex18--;
+                previousClickCount18++;
+                nextClickCounts18 = Math.max(0, nextClickCounts18 - 1);
+                refreshSlider18();
+            }
+        }
+
+        function onNextButtonClick18() {
+            if (nextClickCounts18 < maxButtonClicks18) {
+                currentImageIndex18++;
+                nextClickCounts18++;
+                previousClickCount18 = Math.max(0, previousClickCount18 - 1);
+                refreshSlider18();
+            }
+        }
+
+        document.getElementById('prevButton18').addEventListener('click', onPreviousButtonClick18);
+        document.getElementById('nextButton18').addEventListener('click', onNextButtonClick18);
+
+        initializeImages18();
+
+        const imageContainer19 = document.getElementById('imageContainer19');
+        let currentImageIndex19 = 0;
+        const imageList19 = [
+            './포트이미지/변환된것/f30.png',
+            './포트이미지/변환된것/f29.png',
+            './포트이미지/변환된것/f28.png',
+            './포트이미지/변환된것/f27.png',
+            './포트이미지/변환된것/f26.png',
+            './포트이미지/변환된것/f25.png',
+            './포트이미지/변환된것/f24.png',
+            './포트이미지/변환된것/f23.png',
+            './포트이미지/변환된것/f22.png',
+            './포트이미지/변환된것/f20.png',
+            './포트이미지/변환된것/f1.png',
+            './포트이미지/변환된것/f2.png',
+            './포트이미지/변환된것/f3.png',
+            './포트이미지/변환된것/f4.png',
+            './포트이미지/변환된것/f5.png',
+            './포트이미지/변환된것/f6.png',
+            './포트이미지/변환된것/f7.png',
+            './포트이미지/변환된것/f8.png',
+            './포트이미지/변환된것/f9.png',
+            './포트이미지/변환된것/f10.png',
+            './포트이미지/변환된것/f11.png',
+            './포트이미지/변환된것/f12.png',
+            './포트이미지/변환된것/f13.png',
+            './포트이미지/변환된것/f14.png',
+            './포트이미지/변환된것/f15.png',
+            './포트이미지/변환된것/f16.png',
+            './포트이미지/변환된것/f17.png',
+            './포트이미지/변환된것/f18.png',
+            './포트이미지/변환된것/f19.png',
+            './포트이미지/변환된것/f10.png',
+        ];
+
+        const maxButtonClicks19 = 5;
+        let previousClickCount19 = 0;
+        let nextClickCounts19 = 0;
+
+        function initializeImages19() {
+            imageList19.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer19.appendChild(img);
+            });
+        }
+
+        function refreshSlider19() {
+            const totalImagesCount19 = imageList19.length;
+            const visibleImagesCount19 = 8;
+            const maxImageIndex19 = totalImagesCount19 - visibleImagesCount19;
+
+            if (currentImageIndex19 < 0) {
+                currentImageIndex19 = 0;
+            } else if (currentImageIndex19 > maxImageIndex19) {
+                currentImageIndex19 = maxImageIndex19;
+            }
+
+            imageContainer19.style.transform = `translateX(-${currentImageIndex19 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick19() {
+            if (previousClickCount19 < maxButtonClicks19) {
+                currentImageIndex19--;
+                previousClickCount19++;
+                nextClickCounts19 = Math.max(0, nextClickCounts19 - 1);
+                refreshSlider19();
+            }
+        }
+
+        function onNextButtonClick19() {
+            if (nextClickCounts19 < maxButtonClicks19) {
+                currentImageIndex19++;
+                nextClickCounts19++;
+                previousClickCount19 = Math.max(0, previousClickCount19 - 1);
+                refreshSlider19();
+            }
+        }
+
+        document.getElementById('prevButton19').addEventListener('click', onPreviousButtonClick19);
+        document.getElementById('nextButton19').addEventListener('click', onNextButtonClick19);
+
+        initializeImages19();
+
+
+
+        const imageContainer20 = document.getElementById('imageContainer20');
+        let currentImageIndex20 = 0;
+        const imageList20 = [
+            './포트이미지/변환된것/바보30.png',
+            './포트이미지/변환된것/바보29.png',
+            './포트이미지/변환된것/바보28.png',
+            './포트이미지/변환된것/바보27.png',
+            './포트이미지/변환된것/바보26.png',
+            './포트이미지/변환된것/바보25.png',
+            './포트이미지/변환된것/바보24.png',
+            './포트이미지/변환된것/바보23.png',
+            './포트이미지/변환된것/바보22.png',
+            './포트이미지/변환된것/바보20.png',
+            './포트이미지/변환된것/바보21.png',
+            './포트이미지/변환된것/바보2.png',
+            './포트이미지/변환된것/바보3.png',
+            './포트이미지/변환된것/바보4.png',
+            './포트이미지/변환된것/바보5.png',
+            './포트이미지/변환된것/바보6.png',
+            './포트이미지/변환된것/바보7.png',
+            './포트이미지/변환된것/바보8.png',
+            './포트이미지/변환된것/바보9.png',
+            './포트이미지/변환된것/바보1.png',
+            './포트이미지/변환된것/바보11.png',
+            './포트이미지/변환된것/바보12.png',
+            './포트이미지/변환된것/바보13.png',
+            './포트이미지/변환된것/바보14.png',
+            './포트이미지/변환된것/바보15.png',
+            './포트이미지/변환된것/바보16.png',
+            './포트이미지/변환된것/바보17.png',
+            './포트이미지/변환된것/바보18.png',
+            './포트이미지/변환된것/바보19.png',
+            './포트이미지/변환된것/바보10.png',
+        ];
+
+        const maxButtonClicks20 = 5;
+        let previousClickCount20 = 0;
+        let nextClickCounts20 = 0;
+
+        function initializeImages20() {
+            imageList20.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer20.appendChild(img);
+            });
+        }
+
+        function refreshSlider20() {
+            const totalImagesCount20 = imageList20.length;
+            const visibleImagesCount20 = 8;
+            const maxImageIndex20 = totalImagesCount20 - visibleImagesCount20;
+
+            if (currentImageIndex20 < 0) {
+                currentImageIndex20 = 0;
+            } else if (currentImageIndex20 > maxImageIndex20) {
+                currentImageIndex20 = maxImageIndex20;
+            }
+
+            imageContainer20.style.transform = `translateX(-${currentImageIndex20 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick20() {
+            if (previousClickCount20 < maxButtonClicks20) {
+                currentImageIndex20--;
+                previousClickCount20++;
+                nextClickCounts20 = Math.max(0, nextClickCounts20 - 1);
+                refreshSlider20();
+            }
+        }
+
+        function onNextButtonClick20() {
+            if (nextClickCounts20 < maxButtonClicks20) {
+                currentImageIndex20++;
+                nextClickCounts20++;
+                previousClickCount20 = Math.max(0, previousClickCount20 - 1);
+                refreshSlider20();
+            }
+        }
+
+        document.getElementById('prevButton20').addEventListener('click', onPreviousButtonClick20);
+        document.getElementById('nextButton20').addEventListener('click', onNextButtonClick20);
+
+        initializeImages20();
+
+        const imageContainer21 = document.getElementById('imageContainer21');
+        let currentImageIndex21 = 0;
+        const imageList21 = [
+            './포트이미지/변환된것/q30.png',
+            './포트이미지/변환된것/q29.png',
+            './포트이미지/변환된것/q28.png',
+            './포트이미지/변환된것/q27.png',
+            './포트이미지/변환된것/q26.png',
+            './포트이미지/변환된것/q25.png',
+            './포트이미지/변환된것/q24.png',
+            './포트이미지/변환된것/q23.png',
+            './포트이미지/변환된것/q22.png',
+            './포트이미지/변환된것/q20.png',
+            './포트이미지/변환된것/q21.png',
+            './포트이미지/변환된것/q2.png',
+            './포트이미지/변환된것/q3.png',
+            './포트이미지/변환된것/q4.png',
+            './포트이미지/변환된것/q5.png',
+            './포트이미지/변환된것/q6.png',
+            './포트이미지/변환된것/q7.png',
+            './포트이미지/변환된것/q8.png',
+            './포트이미지/변환된것/q9.png',
+            './포트이미지/변환된것/q1.png',
+            './포트이미지/변환된것/q11.png',
+            './포트이미지/변환된것/q12.png',
+            './포트이미지/변환된것/q13.png',
+            './포트이미지/변환된것/q14.png',
+            './포트이미지/변환된것/q15.png',
+            './포트이미지/변환된것/q16.png',
+            './포트이미지/변환된것/q17.png',
+            './포트이미지/변환된것/q18.png',
+            './포트이미지/변환된것/q19.png',
+            './포트이미지/변환된것/q10.png',
+        ];
+
+        const maxButtonClicks21 = 5;
+        let previousClickCount21 = 0;
+        let nextClickCounts21 = 0;
+
+        function initializeImages21() {
+            imageList21.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer21.appendChild(img);
+            });
+        }
+
+        function refreshSlider21() {
+            const totalImagesCount21 = imageList21.length;
+            const visibleImagesCount21 = 8;
+            const maxImageIndex21 = totalImagesCount21 - visibleImagesCount21;
+
+            if (currentImageIndex21 < 0) {
+                currentImageIndex21 = 0;
+            } else if (currentImageIndex21 > maxImageIndex21) {
+                currentImageIndex21 = maxImageIndex21;
+            }
+
+            imageContainer21.style.transform = `translateX(-${currentImageIndex21 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick21() {
+            if (previousClickCount21 < maxButtonClicks21) {
+                currentImageIndex21--;
+                previousClickCount21++;
+                nextClickCounts21 = Math.max(0, nextClickCounts21 - 1);
+                refreshSlider21();
+            }
+        }
+
+        function onNextButtonClick21() {
+            if (nextClickCounts21 < maxButtonClicks21) {
+                currentImageIndex21++;
+                nextClickCounts21++;
+                previousClickCount21 = Math.max(0, previousClickCount21 - 1);
+                refreshSlider21();
+            }
+        }
+
+        document.getElementById('prevButton21').addEventListener('click', onPreviousButtonClick21);
+        document.getElementById('nextButton21').addEventListener('click', onNextButtonClick21);
+
+        initializeImages21();
+
+        const imageContainer22 = document.getElementById('imageContainer22');
+        let currentImageIndex22 = 0;
+        const imageList22 = [
+            './포트이미지/변환된것/갸본30.png',
+            './포트이미지/변환된것/갸본29.png',
+            './포트이미지/변환된것/갸본28.png',
+            './포트이미지/변환된것/갸본27.png',
+            './포트이미지/변환된것/갸본26.png',
+            './포트이미지/변환된것/갸본25.png',
+            './포트이미지/변환된것/갸본24.png',
+            './포트이미지/변환된것/갸본23.png',
+            './포트이미지/변환된것/갸본22.png',
+            './포트이미지/변환된것/갸본20.png',
+            './포트이미지/변환된것/갸본1.png',
+            './포트이미지/변환된것/갸본2.png',
+            './포트이미지/변환된것/갸본3.png',
+            './포트이미지/변환된것/갸본4.png',
+            './포트이미지/변환된것/갸본5.png',
+            './포트이미지/변환된것/갸본6.png',
+            './포트이미지/변환된것/갸본7.png',
+            './포트이미지/변환된것/갸본8.png',
+            './포트이미지/변환된것/갸본9.png',
+            './포트이미지/변환된것/갸본21.png',
+            './포트이미지/변환된것/갸본11.png',
+            './포트이미지/변환된것/갸본12.png',
+            './포트이미지/변환된것/갸본13.png',
+            './포트이미지/변환된것/갸본14.png',
+            './포트이미지/변환된것/갸본15.png',
+            './포트이미지/변환된것/갸본16.png',
+            './포트이미지/변환된것/갸본17.png',
+            './포트이미지/변환된것/갸본18.png',
+            './포트이미지/변환된것/갸본19.png',
+            './포트이미지/변환된것/갸본10.png',
+        ];
+
+        const maxButtonClicks22 = 5;
+        let previousClickCount22 = 0;
+        let nextClickCounts22 = 0;
+
+        function initializeImages22() {
+            imageList22.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer22.appendChild(img);
+            });
+        }
+
+        function refreshSlider22() {
+            const totalImagesCount22 = imageList22.length;
+            const visibleImagesCount22 = 8;
+            const maxImageIndex22 = totalImagesCount22 - visibleImagesCount22;
+
+            if (currentImageIndex22 < 0) {
+                currentImageIndex22 = 0;
+            } else if (currentImageIndex22 > maxImageIndex22) {
+                currentImageIndex22 = maxImageIndex22;
+            }
+
+            imageContainer22.style.transform = `translateX(-${currentImageIndex22 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick22() {
+            if (previousClickCount22 < maxButtonClicks22) {
+                currentImageIndex22--;
+                previousClickCount22++;
+                nextClickCounts22 = Math.max(0, nextClickCounts22 - 1);
+                refreshSlider22();
+            }
+        }
+
+        function onNextButtonClick22() {
+            if (nextClickCounts22 < maxButtonClicks22) {
+                currentImageIndex22++;
+                nextClickCounts22++;
+                previousClickCount22 = Math.max(0, previousClickCount22 - 1);
+                refreshSlider22();
+            }
+        }
+
+        document.getElementById('prevButton22').addEventListener('click', onPreviousButtonClick22);
+        document.getElementById('nextButton22').addEventListener('click', onNextButtonClick22);
+
+        initializeImages22();
+
+
+        const imageContainer23 = document.getElementById('imageContainer23');
+        let currentImageIndex23 = 0;
+        const imageList23 = [
+            './포트이미지/변환된것/구본30.png',
+            './포트이미지/변환된것/구본29.png',
+            './포트이미지/변환된것/구본28.png',
+            './포트이미지/변환된것/구본27.png',
+            './포트이미지/변환된것/구본26.png',
+            './포트이미지/변환된것/구본25.png',
+            './포트이미지/변환된것/구본24.png',
+            './포트이미지/변환된것/구본23.png',
+            './포트이미지/변환된것/구본22.png',
+            './포트이미지/변환된것/구본20.png',
+            './포트이미지/변환된것/구본1.png',
+            './포트이미지/변환된것/구본2.png',
+            './포트이미지/변환된것/구본3.png',
+            './포트이미지/변환된것/구본4.png',
+            './포트이미지/변환된것/구본5.png',
+            './포트이미지/변환된것/구본6.png',
+            './포트이미지/변환된것/구본7.png',
+            './포트이미지/변환된것/구본8.png',
+            './포트이미지/변환된것/구본9.png',
+            './포트이미지/변환된것/구본10.png',
+            './포트이미지/변환된것/구본11.png',
+            './포트이미지/변환된것/구본12.png',
+            './포트이미지/변환된것/구본13.png',
+            './포트이미지/변환된것/구본14.png',
+            './포트이미지/변환된것/구본15.png',
+            './포트이미지/변환된것/구본16.png',
+            './포트이미지/변환된것/구본17.png',
+            './포트이미지/변환된것/구본18.png',
+            './포트이미지/변환된것/구본19.png',
+            './포트이미지/변환된것/구본21.png',
+        ];
+
+        const maxButtonClicks23 = 5;
+        let previousClickCount23 = 0;
+        let nextClickCounts23 = 0;
+
+        function initializeImages23() {
+            imageList23.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer23.appendChild(img);
+            });
+        }
+
+        function refreshSlider23() {
+            const totalImagesCount23 = imageList23.length;
+            const visibleImagesCount23 = 8;
+            const maxImageIndex23 = totalImagesCount23 - visibleImagesCount23;
+
+            if (currentImageIndex23 < 0) {
+                currentImageIndex23 = 0;
+            } else if (currentImageIndex23 > maxImageIndex23) {
+                currentImageIndex23 = maxImageIndex23;
+            }
+
+            imageContainer23.style.transform = `translateX(-${currentImageIndex23 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick23() {
+            if (previousClickCount23 < maxButtonClicks23) {
+                currentImageIndex23--;
+                previousClickCount23++;
+                nextClickCounts23 = Math.max(0, nextClickCounts23 - 1);
+                refreshSlider23();
+            }
+        }
+
+        function onNextButtonClick23() {
+            if (nextClickCounts23 < maxButtonClicks23) {
+                currentImageIndex23++;
+                nextClickCounts23++;
+                previousClickCount23 = Math.max(0, previousClickCount23 - 1);
+                refreshSlider23();
+            }
+        }
+
+        document.getElementById('prevButton23').addEventListener('click', onPreviousButtonClick23);
+        document.getElementById('nextButton23').addEventListener('click', onNextButtonClick23);
+
+        initializeImages23();
+
+        const imageContainer24 = document.getElementById('imageContainer24');
+        let currentImageIndex24 = 0;
+        const imageList24 = [
+            './포트이미지/변환된것/피본30.png',
+            './포트이미지/변환된것/피본29.png',
+            './포트이미지/변환된것/피본28.png',
+            './포트이미지/변환된것/피본27.png',
+            './포트이미지/변환된것/피본26.png',
+            './포트이미지/변환된것/피본25.png',
+            './포트이미지/변환된것/피본24.png',
+            './포트이미지/변환된것/피본23.png',
+            './포트이미지/변환된것/피본22.png',
+            './포트이미지/변환된것/피본20.png',
+            './포트이미지/변환된것/피본1.png',
+            './포트이미지/변환된것/피본2.png',
+            './포트이미지/변환된것/피본3.png',
+            './포트이미지/변환된것/피본4.png',
+            './포트이미지/변환된것/피본5.png',
+            './포트이미지/변환된것/피본6.png',
+            './포트이미지/변환된것/피본7.png',
+            './포트이미지/변환된것/피본8.png',
+            './포트이미지/변환된것/피본9.png',
+            './포트이미지/변환된것/피본10.png',
+            './포트이미지/변환된것/피본11.png',
+            './포트이미지/변환된것/피본12.png',
+            './포트이미지/변환된것/피본13.png',
+            './포트이미지/변환된것/피본14.png',
+            './포트이미지/변환된것/피본15.png',
+            './포트이미지/변환된것/피본16.png',
+            './포트이미지/변환된것/피본17.png',
+            './포트이미지/변환된것/피본18.png',
+            './포트이미지/변환된것/피본19.png',
+            './포트이미지/변환된것/피본21.png',
+        ];
+
+        const maxButtonClicks24 = 5;
+        let previousClickCount24 = 0;
+        let nextClickCounts24 = 0;
+
+        function initializeImages24() {
+            imageList24.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer24.appendChild(img);
+            });
+        }
+
+        function refreshSlider24() {
+            const totalImagesCount24 = imageList24.length;
+            const visibleImagesCount24 = 8;
+            const maxImageIndex24 = totalImagesCount24 - visibleImagesCount24;
+
+            if (currentImageIndex24 < 0) {
+                currentImageIndex24 = 0;
+            } else if (currentImageIndex24 > maxImageIndex24) {
+                currentImageIndex24 = maxImageIndex24;
+            }
+
+            imageContainer24.style.transform = `translateX(-${currentImageIndex24 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick24() {
+            if (previousClickCount24 < maxButtonClicks24) {
+                currentImageIndex24--;
+                previousClickCount24++;
+                nextClickCounts24 = Math.max(0, nextClickCounts24 - 1);
+                refreshSlider24();
+            }
+        }
+
+        function onNextButtonClick24() {
+            if (nextClickCounts24 < maxButtonClicks24) {
+                currentImageIndex24++;
+                nextClickCounts24++;
+                previousClickCount24 = Math.max(0, previousClickCount24 - 1);
+                refreshSlider24();
+            }
+        }
+
+        document.getElementById('prevButton24').addEventListener('click', onPreviousButtonClick24);
+        document.getElementById('nextButton24').addEventListener('click', onNextButtonClick24);
+
+        initializeImages24();
+
+        const imageContainer25 = document.getElementById('imageContainer25');
+        let currentImageIndex25 = 0;
+        const imageList25 = [
+            './포트이미지/변환된것/지본30.png',
+            './포트이미지/변환된것/지본29.png',
+            './포트이미지/변환된것/지본28.png',
+            './포트이미지/변환된것/지본27.png',
+            './포트이미지/변환된것/지본26.png',
+            './포트이미지/변환된것/지본25.png',
+            './포트이미지/변환된것/지본24.png',
+            './포트이미지/변환된것/지본23.png',
+            './포트이미지/변환된것/지본22.png',
+            './포트이미지/변환된것/지본20.png',
+            './포트이미지/변환된것/지본1.png',
+            './포트이미지/변환된것/지본2.png',
+            './포트이미지/변환된것/지본3.png',
+            './포트이미지/변환된것/지본4.png',
+            './포트이미지/변환된것/지본5.png',
+            './포트이미지/변환된것/지본6.png',
+            './포트이미지/변환된것/지본7.png',
+            './포트이미지/변환된것/지본8.png',
+            './포트이미지/변환된것/지본9.png',
+            './포트이미지/변환된것/지본10.png',
+            './포트이미지/변환된것/지본11.png',
+            './포트이미지/변환된것/지본12.png',
+            './포트이미지/변환된것/지본13.png',
+            './포트이미지/변환된것/지본14.png',
+            './포트이미지/변환된것/지본15.png',
+            './포트이미지/변환된것/지본16.png',
+            './포트이미지/변환된것/지본17.png',
+            './포트이미지/변환된것/지본18.png',
+            './포트이미지/변환된것/지본19.png',
+            './포트이미지/변환된것/지본21.png',
+        ];
+
+        const maxButtonClicks25 = 5;
+        let previousClickCount25 = 0;
+        let nextClickCounts25 = 0;
+
+        function initializeImages25() {
+            imageList25.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer25.appendChild(img);
+            });
+        }
+
+        function refreshSlider25() {
+            const totalImagesCount25 = imageList25.length;
+            const visibleImagesCount25 = 8;
+            const maxImageIndex25 = totalImagesCount25 - visibleImagesCount25;
+
+            if (currentImageIndex25 < 0) {
+                currentImageIndex25 = 0;
+            } else if (currentImageIndex25 > maxImageIndex25) {
+                currentImageIndex25 = maxImageIndex25;
+            }
+
+            imageContainer25.style.transform = `translateX(-${currentImageIndex25 * 1766}px)`;
+        }
+
+        function onPreviousButtonClick25() {
+            if (previousClickCount25 < maxButtonClicks25) {
+                currentImageIndex25--;
+                previousClickCount25++;
+                nextClickCounts25 = Math.max(0, nextClickCounts25 - 1);
+                refreshSlider25();
+            }
+        }
+
+        function onNextButtonClick25() {
+            if (nextClickCounts25 < maxButtonClicks25) {
+                currentImageIndex25++;
+                nextClickCounts25++;
+                previousClickCount25 = Math.max(0, previousClickCount25 - 1);
+                refreshSlider25();
+            }
+        }
+
+        document.getElementById('prevButton25').addEventListener('click', onPreviousButtonClick25);
+        document.getElementById('nextButton25').addEventListener('click', onNextButtonClick25);
+
+        initializeImages25();
+
+
+
+
+        const scrollPositionElement = document.getElementById('scrollPosition');
+
+        window.addEventListener('scroll', function () {
+
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+            scrollPositionElement.textContent = '스크롤 위치: ' + scrollY;
+        });
+        function addMoreContent() {
+            const contentDiv = document.createElement('div');
+            contentDiv.style.background = '#e0e0e0';
+            document.body.appendChild(contentDiv);
+        }
+
+        window.onload = function () {
+            addMoreContent();
+        };
+
+        function getPageWidth() {
+            const width = Math.max(
+                document.body.scrollWidth,
+                document.documentElement.scrollWidth,
+                document.body.offsetWidth,
+                document.documentElement.offsetWidth,
+                document.body.clientWidth,
+                document.documentElement.clientWidth
+            );
+            return width;
+        }
+
+        function onScroll() {
+            const pageWidth = getPageWidth();
+            console.log('현재 페이지 너비:', pageWidth);
+        }
+
+        window.addEventListener('scroll', onScroll);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<style>
+    #body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+
+    .outer {
+        width: 100%;
+        height: 1000vh;
+        margin: 0 auto;
+        background-color: #040714;
+    }
+
+    .main1 {
+        width: 100%;
+        max-width: 1900px;
+        height: 100%;
+        max-height: 730px;
+        border: 1px solid #010101;
+        background: url(./포트이미지/메인이미지1/86ac05f5-94eb-47c0-b191-0234ba2cf2d2.png) no-repeat top / cover;
+        box-sizing: border-box;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 2px;
+        left: 50%;
+        margin-top: 655px;
+        box-sizing: border-box;
+    }
+
+    button {
+        cursor: pointer;
+        transition: transform 0.2s;
+        background-color: rgba(128, 128, 128, 0.384);
+    }
+
+    .btn1 {
+        width: 100%;
+        max-width: 200px;
+        height: 3px;
+        border: 0px;
+    }
+
+    button:hover {
+        background-color: white;
+    }
+
+    .main_box {
+        height: 470px;
+        width: 530px;
+        margin-top: 80px;
+        position: absolute;
+        margin-left: 70px;
+
+    }
+
+    .logo {
+        width: 175px;
+        height: 110px;
+        background: url(./original\ \(9\).png) no-repeat center / contain;
+        cursor: pointer;
+    }
+
+    .box1 {
+        width: 100%;
+        height: 100px;
+        color: white;
+        font-size: 37px;
+        margin-top: 10px;
+        line-height: 1.2;
+        font-weight: 700;
+        letter-spacing: -0.06em;
+    }
+
+    .box2 {
+        width: 100%;
+        height: 120px;
+        color: white;
+        display: flex;
+    }
+
+    .inbox1,
+    .inbox2 {
+        width: 48%;
+        height: 120px;
+
+    }
+
+    .inbox1 {
+        margin-right: 22px;
+        box-sizing: border-box;
+    }
+
+    .box3 {
+        width: 100%;
+        height: 117px;
+        box-sizing: border-box;
+        color: white;
+        margin-top: 8px;
+    }
+
+    .inbox1_1 {
+        width: 100%;
+        height: 55px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: #02d6e8;
+        color: black;
+        font-weight: 700;
+        font-size: 15px;
+        border-radius: 4px;
+    }
+
+    .inbox2_1 {
+        width: 93%;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: #02d6e8;
+        color: black;
+        font-weight: 700;
+        font-size: 15px;
+        border-radius: 4px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .inbox2_2 {
+        width: 93%;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: #02d5e800;
+        color: white;
+
+        font-weight: 700;
+        font-size: 15px;
+        border-radius: 4px;
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
+    .inbox1_2 {
+        width: 100%;
+        font-size: 10px;
+        margin-top: 5px;
+        line-height: 1.5;
+        color: #a7a3a3;
+        font-weight: 700;
+    }
+
+    ul {
+        font-size: 13.5px;
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+        margin-bottom: 18px;
+        letter-spacing: -0.05em;
+        line-height: 1.6;
+        font-weight: 700;
+        color: #a7a3a3;
+    }
+
+    .underline {
+        text-decoration: underline;
+        padding-bottom: 2px;
+        color: white;
+    }
+
+    .ul1 {
+        font-size: 10px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .banner1 {
+        width: 100%;
+        height: 590px;
+
+        overflow: hidden;
+    }
+
+    @media (max-width: 1700px) {
+        .slider {
+            padding: 18px;
+            transition: all 1s;
+        }
+    }
+
+    @media (max-width: 1600px) {
+        .slider {
+            padding: 18px;
+            transition: all 1s;
+        }
+    }
+
+    @media (max-width: 1400px) {
+        .slider {
+            padding: 20px;
+            transition: all 1s;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .slider {
+            padding: 5px;
+            transition: all 0;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .slider {
+            padding: 10px;
+            transition: all 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .banner1 {
+            height: 600px;
+        }
+
+        .slider {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .banner1 {
+            height: 400px;
+        }
+
+        .slider {
+            padding: 5px;
+            font-size: 12px;
+        }
+    }
+
+    .bon1,
+    .bon4 {
+        width: 100%;
+        height: 80px;
+        color: white;
+        font-weight: 900;
+        font-size: 36px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-top: 18px;
+        letter-spacing: -0.06em;
+    }
+
+    .bon3 {
+        display: flex;
+        align-items: center;
+        width: 90%;
+        max-width: 2200px;
+        height: 160px;
+
+
+        margin: 80px auto;
+        box-sizing: border-box;
+    }
+
+    .bon2 {
+        width: 100%;
+        height: 90%;
+        max-height: 200px;
+
+        margin-top: 5px;
+        margin-left: 60px;
+    }
+
+    .slider {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        max-width: 2400px;
+        height: 100%;
+        max-height: 180px;
+
+    }
+
+    .image-container {
+        width: 100%;
+        max-width: 307px;
+        height: 100%;
+        max-height: 180px;
+        display: flex;
+        transition: transform 0.5s ease;
+        box-sizing: border-box;
+        margin-top: 0;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-right: 20px;
+    }
+
+    .image-container3 {
+        display: flex;
+        width: 100%;
+        transition: transform 0.5s ease;
+    }
+
+    .image-container3 img {
+        max-width: 100%;
+        height: auto;
+        margin-right: 20px;
+    }
+
+    .button2-container {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .cont1 {
+
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .textbox1 {
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .textbox2 {
+        font-size: 15px;
+        color: white;
+        width: 65%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin: 10px auto;
+    }
+
+    .textbox2_1 {
+        font-size: 15px;
+        color: white;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .bon5 {
+        color: white;
+    }
+
+    #textbox2_1,
+    #textbox2_3 {
+        margin-top: 8px;
+    }
+
+    #textbox2_2,
+    #textbox2_3 {
+        text-align: center;
+    }
+
+    .main2 {
+        width: 80%;
+        height: 86vh;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .scroll-area {
+        height: 200vh;
+        padding: 50px;
+
+    }
+
+    .scroll-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .bon5 {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    #boxs1 {
+        border-bottom: 1px solid white;
+    }
+
+    .container3 {
+        width: 1000px;
+        height: 84.5vh;
+        margin: 0 auto;
+        position: relative;
+    }
+
+
+    .banner6 {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        max-width: 1000px;
+        height: 150px;
+        background-color: #1d1f2b;
+        display: none;
+        z-index: 1000;
+        border-bottom: 1px solid white;
+    }
+
+    .boxs4 {
+        width: 100%;
+        height: 150px;
+        background-color: lightblue;
+        display: flex;
+        box-sizing: border-box;
+        border-bottom: 0.2px solid grey;
+    }
+
+    #newBox {
+        width: 100%;
+        height: 150px;
+        background-color: lightblue;
+        display: flex;
+        position: absolute;
+        margin-top: 27.5px;
+        border-bottom: 1px solid white;
+    }
+
+    .innerbox1 {
+        margin: 0;
+        width: 45%;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: #040714;
+    }
+
+    .innerbox2 {
+        width: 27.5%;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: #040714;
+    }
+
+    .innerbox3 {
+        background-color: #1d1f2b;
+        width: 27.5%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .container4 {
+        width: 1000px;
+        height: 180px;
+        color: white;
+        margin: 20px auto;
+        margin-bottom: 100px;
+    }
+
+    .main3 {
+        width: 90%;
+        max-width: 1900px;
+        height: 100%;
+        max-height: 550px;
+        box-sizing: border-box;
+        display: flex;
+        margin: 100px;
+        margin: 0 auto;
+    }
+
+    .sbox1 {
+        width: 50%;
+        margin-right: 40px;
+        height: 100%;
+    }
+
+    .sbox2 {
+        width: 50%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .bon9 {
+        width: 95%;
+        height: 130px;
+        color: white;
+        font-weight: 900;
+        font-size: 38px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-top: 200px;
+        margin-left: 20px;
+        margin-right: 50px;
+        letter-spacing: -0.06em;
+        box-sizing: border-box;
+    }
+
+    .bon10 {
+        margin-left: 20px;
+        width: 95%;
+        height: 130px;
+        font-size: 17.3px;
+        list-style: none;
+        margin-top: 10px;
+        letter-spacing: -0.05em;
+        line-height: 1.6;
+        font-weight: 700;
+        color: #a7a3a3;
+    }
+
+    .sbox2 {
+        background: url(./포트이미지/메인이미지1/original\ \(1\).png) no-repeat center / contain;
+    }
+
+    .bon5 {
+        width: 100%;
+        height: 50px;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        line-height: 0.8;
+        font-size: 15px;
+    }
+
+    .main5 {
+        width: 100%;
+        max-width: 1500px;
+        height: 800px;
+        margin: 0 auto;
+    }
+
+    .container-wizard {
+        width: 100%;
+        margin: 20px auto;
+        padding: 30px;
+        position: relative;
+        color: white;
+        background-color: #13151d;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 1200px) {
+        .container-wizard {
+            padding: 20px;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .container-wizard {
+            padding: 15px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main5 {
+            height: 600px;
+        }
+
+        .container-wizard {
+            padding: 10px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .main5 {
+            height: 400px;
+        }
+
+        .container-wizard {
+            padding: 5px;
+            font-size: 12px;
+        }
+    }
+
+
+    .toggle-spell {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        background: none;
+        font-size: 25px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .secret-scroll {
+        display: none;
+        margin-top: 20px;
+        text-align: left;
+        padding-top: 10px;
+        color: white;
+    }
+
+    .question-text {
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .question1-text {
+        width: 100%;
+        height: auto;
+        font-size: 20px;
+        color: #ffffff;
+        color: #ffffff;
+        text-align: center;
+        padding-top: 22.5px;
+        padding-bottom: 22.5px;
+        border-top: 1px grey;
+    }
+
+    .body-medium2 {
+        text-decoration: underline;
+    }
+
+    .accordion-container {
+        background-color: #13151d;
+        box-sizing: border-box;
+        margin-top: 16px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .banner2 {
+        width: 100%;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .content {
+        height: 1500px;
+        background: linear-gradient(to bottom, #f0f0f0, #c0c0c0);
+    }
+
+    .scroll-position {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .pp1 {
+        font-size: 11px;
+        line-height: 1.6;
+        color: #d6d0d0;
+        font-weight: 700;
+        box-sizing: border-box;
+    }
+
+    .ppp1 {
+        font-size: 12px;
+        margin-top: 20px;
+        line-height: 1.6;
+        color: #d6d0d0;
+        font-weight: 900;
+        text-decoration: underline;
+    }
+
+    .main4 {
+        overflow: hidden;
+    }
+
+    #boxs1,
+    .banner6 {
+        width: 100%;
+        height: 140px;
+    }
+
+    #boxs2 {
+        width: 100%;
+        height: 160px;
+    }
+
+    #boxs3 {
+        width: 100%;
+        height: 90px;
+    }
+
+    #boxs4 {
+        width: 100%;
+        height: 110px;
+    }
+
+    #boxs5 {
+        width: 100%;
+        height: 90px;
+    }
+
+    #boxs6 {
+        width: 100%;
+        height: 90px;
+    }
+
+    #boxs7 {
+        width: 100%;
+        height: 90px;
+    }
+
+    #innerbox1_1 {
+        background: #040714;
+    }
+</style>
+
+<body>
+    <div id="body">
+        <div class="outer">
+            <div class="main1" id="mainImage">
+                <div class="main_box">
+                    <a href="./포트폴리오2.html">
+                        <div class="logo"></div>
+                    </a>
+                    <div class="box1">
+                        이 모든 이야기가 여기에 <br> 지금 스트리밍 중
+                    </div>
+                    <div class="box2">
+                        <div class="inbox1">
+                            <div class="inbox1_1">디즈니+ 스탠다드</div>
+                            <div class="inbox1_2">
+                                최대 1080p Full HD 비디오<br>최대 5.1 오디오<br>최대 2대 기기 동시 스트리밍
+                            </div>
+                        </div>
+                        <div class="inbox2">
+                            <div class="inbox1_1">디즈니+ 프리미엄</div>
+                            <div class="inbox1_2">
+                                최대 4K UHD & HDR 비디오<br>최대 Dolby Atmos 오디오<br>최대 4대 기기 동시 스트리밍
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box3">
+                        <ul>
+                            <li><span class="underline">디즈니+ 프리미엄 연간 멤버십</span>을 구독하고 최대 16% 할인*을 받으세요.</li>
+                            <li>연간 멤버십을 포함한 멤버십 <span class="underline">유형별 세부 정보</span>를 확인해 보세요.</li>
+                        </ul>
+                        <ul>
+                            <li>디즈니+ 스탠다드는 월 9,900원부터, 디즈니+ 프리미엄은 월 13,900원부터 구독 가능합니다.</li>
+                        </ul>
+                        <ul class="ul1">
+                            <li>*월간 멤버십 12개월 구독료 대비 할인된 가격입니다. 추가 약관 적용.</li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <div class="button-container">
+                    <button onclick="changeImage(0)" class="btn1"></button>
+                    <button onclick="changeImage(1)" class="btn1"></button>
+                    <button onclick="changeImage(2)" class="btn1"></button>
+                    <button onclick="changeImage(3)" class="btn1"></button>
+                    <button onclick="changeImage(4)" class="btn1"></button>
+                    <button id="startButton" onclick="startSlideshow()">시작</button>
+                    <button id="stopButton" class="hidden" onclick="stopSlideshow()">정지</button>
+                </div>
+            </div>
+            <div class="banner1">
+                <div class="bon1">인기 콘텐츠</div>
+                <div class="bon2">
+                    <div class="slider">
+                        <div class="image-container" id="imageContainer"></div>
+                    </div>
+                    <div class="button-container2">
+                        <button id="prevButton">이전</button>
+                        <button id="nextButton">다음</button>
+                    </div>
+                </div>
+                <div class="bon3">
+                    <div class="cont1">
+                        <div class="textbox1">1,200편 이상의 영화</div>
+                        <div class="textbox2">어워드 수상에 빛나는 블록버스터 및 단독 공개작 포함</div>
+                    </div>
+                    <div class="cont1">
+                        <div class="textbox1">20,000편 이상의 에피소드</div>
+                        <div class="textbox2">코미디, 드라마, 범죄 실화 등 다양한 장르</div>
+                    </div>
+                    <div class="cont1">
+                        <div class="textbox1">신규 및 단독 공개 콘텐츠</div>
+                        <div class="textbox2">매주 새로운 영화 및 시리즈 공개</div>
+                    </div>
+                    <div class="cont1">
+                        <div class="textbox1">다양한 콘텐츠 저장 가능</div>
+                        <div class="textbox2">최대 10대의 기기에서 원하는 콘텐츠를 자유롭게 저장</div>
+                    </div>
+                </div>
+            </div>
+            <div class="banner2">
+                <div class="bon4">원하는 멤버십을 선택하세요.</div>
+                <div class="bon5">멤버십은 언제든지 변경 또는 취소* 할 수 있습니다.</div>
+            </div>
+            <div class="main2">
+                <div class="container3">
+                    <div class="banner6" id="banner6">
+                        <div class="innerbox1"></div>
+                        <div class="innerbox2">
+                            <div class="question1-text">디즈니+ 스탠다드</div>
+                            <div class="inbox2_1">월 ₩9,900</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="question1-text">디즈니+ 프리미엄</div>
+                            <div class="inbox2_1">월 ₩13,900</div>
+                        </div>
+                    </div>
+                    <div class="boxs4" id="boxs1">
+                        <div class="innerbox1" id="innerbox1_1"></div>
+                        <div class="innerbox2">
+                            <div class="question1-text">디즈니+ 스탠다드</div>
+                            <div class="inbox2_1">월 ₩9,900</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="question1-text">디즈니+ 프리미엄</div>
+                            <div class="inbox2_1">월 ₩13,900</div>
+                        </div>
+                    </div>
+                    <div class="boxs4" id="boxs2">
+                        <div class="innerbox1">
+                            <div class="textbox2_1"><br><br><br><br>연간 멤버십 구독료 (부가세 포함)</div>
+                        </div>
+                        <div class="innerbox2">
+                            <div class="inbox2_2">월 ₩9,900</div>
+                            <div class="textbox2_1" id="textbox2_2"><br><br>최대 16% 할인된 가격**</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="inbox2_2">월 ₩13,900</div>
+                            <div class="textbox2_1" id="textbox2_2"><br><br>최대 16% 할인된 가격**</div>
+                        </div>
+                    </div>
+                    <div class="boxs4" id="boxs3">
+                        <div class="innerbox1">
+                            <div class="textbox2_1"><br><br>영상 화질***</div>
+                        </div>
+                        <div class="innerbox2">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>최대 1080p Full HD</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>최대 4K UHD & HDR</div>
+                        </div>
+                    </div>
+                    <div class="boxs4" id="boxs4">
+                        <div class="innerbox1">
+                            <div class="textbox2_1" id="textbox2_1"><br><br>오디오***</div>
+                        </div>
+                        <div class="innerbox2">
+                            <div class="textbox2_1" id="textbox2_3"><br><br>최대 5.1 사운드</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>최대 Dolby Atmos<br>오디오</div>
+                        </div>
+                    </div>
+                    <div class="boxs4" id="boxs5">
+                        <div class="innerbox1">
+                            <div class="textbox2_1"><br><br>동시 스트리밍</div>
+                        </div>
+                        <div class="innerbox2">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>2</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>4</div>
+                        </div>
+                    </div>
+                    <div class="boxs4" id="boxs6">
+                        <div class="innerbox1">
+                            <div class="textbox2_1"><br><br>광고</div>
+                        </div>
+                        <div class="innerbox2">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>광고 없는 스트리밍</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>광고 없는 스트리밍</div>
+                        </div>
+                    </div>
+                    <div id="newBox">
+                        <div class="innerbox1"></div>
+                        <div class="innerbox2">
+                            <div class="question1-text">디즈니+ 스탠다드</div>
+                            <div class="inbox2_1">월 ₩9,900</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="question1-text">디즈니+ 프리미엄</div>
+                            <div class="inbox2_1">월 ₩13,900</div>
+                        </div>
+                    </div>
+                    <div class="boxs4" id="boxs7">
+                        <div class="innerbox1">
+                            <div class="textbox2_1"><br><br>콘텐츠 저장</div>
+                        </div>
+                        <div class="innerbox2">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>ㅁ</div>
+                        </div>
+                        <div class="innerbox3">
+                            <div class="textbox2_1" id="textbox2_2"><br><br>ㅁ</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="container4">
+                <p class="pp1">멤버십 구독이 필요합니다.<br>
+                    *결제 주기 종료 시 취소 처리됩니다.<br>
+                    **월간 멤버십 12개월 구독료 대비 할인된 가격입니다. 추가 약관 적용.<br>
+                    ***영상 화질/오디오 및 저장 기능은 인터넷 서비스, 기기 성능,
+                    멤버십 유형 및 각 콘텐츠에 따라 달라질 수 있습니다.
+                    각 콘텐츠별 다양한 기능 표시가 있을 수 있으나,
+                    해당 멤버십 유형에서 사용 가능한 최대 사양까지만 이용할 수 있습니다. <span class="ppp1">더 알아보기.</span>
+                </p>
+            </div>
+            <div class="main3">
+                <div class="sbox1">
+                    <div class="bon9">취향에 따라 골라보는 다양한 콘텐츠가 모두 한자리에</div>
+                    <div class="bon10">디즈니+는 디즈니, 픽사, 마블, 스타워즈, 내셔널지오그래픽, Star의
+                        최고 콘텐츠들을 모두 한곳에 모아 제공합니다.</div>
+                </div>
+                <div class="sbox2"></div>
+            </div>
+            <div class="main4">
+                <div class="banner2">
+                    <div class="bon4">디즈니+ 오리지널과 블록버스터 영화</div>
+                    <div class="bon5">다른 어디에서도 볼 수 없는 디즈니+ 오리지널을 만나보세요. 디즈니, 픽사, 마블, 스타워즈의 최고 인기 영화도 마음껏 즐길 수 있습니다.
+                    </div>
+                </div>
+                <div class="bon2">
+                    <div class="slider">
+                        <div class="image-container3" id="imageContainer3"></div>
+                    </div>
+                    <div class="button-container3">
+                        <button id="prevButton3">이전</button>
+                        <button id="nextButton3">다음</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main5">
+                <div class="bon4">자주 묻는 질문</div>
+                <div class="container-wizard" id="alphaWizard">
+                    <span class="question-text">디즈니 +는 무엇인가요?</span>
+                    <button class="toggle-spell" id="triggerAlphaWizard">+</button>
+                    <div class="secret-scroll" id="scrollAlphaWizard">
+                        <p>디즈니+는 디즈니, 픽사, 마블, 스타워즈, 내셔널지오그래픽, Star의 콘텐츠를 모두 즐길 수 있는 곳입니다. 최신 공개작부터 시대를 초월한 명작과 독점 오리지널에
+                            이르기까지 다양하고 풍성한 콘텐츠를 광고 없이 스트리밍할 수 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="container-wizard" id="betaWizard">
+                    <span class="question-text">디즈니+에서 어떤 콘텐츠를 시청할 수 있나요?</span>
+                    <button class="toggle-spell" id="triggerBetaWizard">+</button>
+                    <div class="secret-scroll" id="scrollBetaWizard">
+                        <p><span class="body-medium">디즈니+는 새로운 콘텐츠를 계속해서 추가하고 있습니다.</span></p>
+                        <ul>
+                            <li>
+                                <p><span class="body-medium">최신 공개작과 시대를 초월한 명작</span></p>
+                            </li>
+                            <li>
+                                <p><span class="body-medium">독점 공개하는 새로운 오리지널 영화와 시리즈</span></p>
+                            </li>
+                            <li>
+                                <p><span class="body-medium">흥미진진한 스페셜과 기간 한정 스트리밍되는 특별 콘텐츠</span></p>
+                            </li>
+                            <li>
+                                <p><span class="body-medium">그때 그 시절 추억의 작품과 인기 시리즈의 지난 시즌 에피소드</span></p>
+                            </li>
+                            <li>
+                                <p><span class="body-medium">스카이워커 사가 전체와 대부분의 마블 시네마틱 유니버스 작품</span></p>
+                            </li>
+                            <li>
+                                <p><span class="body-medium">인기 단편과 실험적인 단편</span></p>
+                            </li>
+                            <li>
+                                <p><span class="body-medium">다큐멘터리, 리얼리티 시리즈 등</span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container-wizard" id="gammaWizard">
+                    <span class="question-text">디즈니+를 어디에서 시청할 수 있나요?</span>
+                    <button class="toggle-spell" id="triggerGammaWizard">+</button>
+                    <div class="secret-scroll" id="scrollGammaWizard">
+                        <p><span class="body-medium">디즈니+ 앱은 모바일 기기, 웹 브라우저, 게임 콘솔, 셋톱박스, 스마트 TV에서 이용할 수 있습니다. 지원되는 기기의
+                                전체 목록을 보려면 </span>
+                            <span class="body-medium2">여기를 클릭</span>
+                            <span class="body-medium">하세요.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container-wizard" id="deltaWizard">
+                    <span class="question-text">디즈니+를 얼마에 이용할 수 있나요?</span>
+                    <button class="toggle-spell" id="triggerDeltaWizard">+</button>
+                    <div class="secret-scroll" id="scrollDeltaWizard">
+                        <p><span class="body-medium">디즈니+ 스탠다드(부가세 포함): </span>
+                            <span>월 ₩9,900</span>
+                            <span class="body-medium"> / </span>
+                            <span>연 ₩99,000</span>
+                            <br>
+                            <span class="body-medium">디즈니+ 프리미엄(부가세 포함): </span>
+                            <span>월 ₩13,900</span>
+                            <span class="body-medium"> / </span>
+                            <span>연 ₩139,000</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="scroll-position" id="scrollPosition">스크롤 위치: 0</div>
+
+    <script>
+
+        const images = [
+            './포트이미지/메인이미지1/86ac05f5-94eb-47c0-b191-0234ba2cf2d2.png',
+            './포트이미지/메인이미지1/013cfbcc-e386-4450-a79a-0fe8f9f5a4a8.png',
+            './포트이미지/메인이미지1/3e966d8a-401d-4aa8-a0cc-af9a6b663573.png',
+            './포트이미지/메인이미지1/746c0778-dfcb-41c1-b176-a1bb830b0aae.png',
+            './포트이미지/메인이미지1/9cfa55c0-b74b-4be4-b853-84c405ea448b.png'
+        ];
+
+        function changeImage(index) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.style.backgroundImage = `url(${images[index]})`;
+        }
+
+        const images2 = [
+            './포트이미지/메인이미지1/c2eb4b4c-9340-4475-a2cb-e1f2f0e3256f.png',
+            './포트이미지/메인이미지1/6a2bb9e9-fd18-4dae-b23d-b3eed40f1886.png',
+            './포트이미지/메인이미지1/329d4af7-e7c9-4877-a8e5-210e45082f12.png',
+            './포트이미지/메인이미지1/d87a268f-7342-484a-ad83-1c968b643b4d.png',
+            './포트이미지/메인이미지1/5d5f6c3e-99a6-4431-a488-937ac1bbdd34.png',
+            './포트이미지/메인이미지1/ed436062-d5b6-4d59-a067-63080b27e162.png',
+            './포트이미지/메인이미지1/a6a68461-19bb-4624-9be5-6bd634f5b788.png',
+            './포트이미지/메인이미지1/7cd58b4e-c75e-41e4-b870-872e619c2d45.png',
+            './포트이미지/메인이미지1/3f19964c-e64d-4522-9762-bad40c3a3f49.png',
+            './포트이미지/메인이미지1/d9e8722d-ccda-4d36-be8c-768d6706c219.png',
+            './포트이미지/메인이미지1/bde67191-d2d4-4eb8-9b81-69001fa98d1d.png',
+            './포트이미지/메인이미지1/bb5fd58c-f0d7-4d5e-9cb5-c0731b823f24.png',
+            './포트이미지/캡처.PNG',
+            './포트이미지/메인이미지1/e2f60cf2-0615-47ee-a353-387c58561de6.png',
+            './포트이미지/메인이미지1/91ddfb9f-9a2c-45ae-9384-7c8b6f0ce87f.png',
+            './포트이미지/캡처2.PNG',
+            './포트이미지/메인이미지1/81da4b6d-270e-40ff-afbc-c22bd70784d9.png'
+        ];
+
+        const imageContainer = document.getElementById('imageContainer');
+        let currentIndex = 0;
+
+        const maxClicks = 2;
+        let prevClickCount = 0;
+        let nextClickCount = 0;
+
+        function loadImages() {
+            images2.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer.appendChild(img);
+            });
+        }
+
+        function updateSlider() {
+            const totalImages = images2.length;
+            const visibleImages = 4;
+            const maxIndex = totalImages - visibleImages;
+
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            } else if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+
+            imageContainer.style.transform = `translateX(-${currentIndex * 1885}px)`;
+        }
+
+        function handlePrevClick() {
+            if (prevClickCount < maxClicks) {
+                currentIndex--;
+                prevClickCount++;
+                nextClickCount = Math.max(0, nextClickCount - 1);
+                updateSlider();
+            }
+        }
+
+        function handleNextClick() {
+            if (nextClickCount < maxClicks) {
+                currentIndex++;
+                nextClickCount++;
+                prevClickCount = Math.max(0, prevClickCount - 1);
+                updateSlider();
+            }
+        }
+
+        document.getElementById('prevButton').addEventListener('click', handlePrevClick);
+        document.getElementById('nextButton').addEventListener('click', handleNextClick);
+
+        loadImages();
+
+        document.addEventListener('scroll', function () {
+            const scrollTop = window.scrollY;
+            const banner6 = document.getElementById('banner6');
+            if (scrollTop >= 1476 && scrollTop < 2088) {
+                banner6.style.display = 'flex';
+            } else {
+                banner6.style.display = 'none';
+            }
+        });
+
+
+        document.addEventListener('scroll', function () {
+            const scrollTop = window.scrollY;
+
+
+            if (scrollTop >= 2088) {
+                document.getElementById('boxs6').style.display = 'none';
+                document.getElementById('boxs7').style.display = 'none';
+                document.getElementById('newBox').style.display = 'flex';
+            } else {
+                document.getElementById('boxs6').style.display = 'flex';
+                document.getElementById('boxs7').style.display = 'flex';
+                document.getElementById('newBox').style.display = 'none';
+            }
+        });
+
+        const imageContainer3 = document.getElementById('imageContainer3');
+        let currentImageIndex = 0;
+        const imageList3 = [
+            './포트이미지/메인이미지1/81da4b6d-270e-40ff-afbc-c22bd70784d9.png',
+            './포트이미지/메인이미지1/4649251e-2b94-4a73-8f91-22e09dbecf62.png',
+            './포트이미지/메인이미지1/319449ad-0bcb-4661-8ce4-88e1429df46e.png',
+            './포트이미지/original (1).png',
+            './포트이미지/original (2).png',
+            './포트이미지/original (3).png',
+            './포트이미지/original (4).png',
+            './포트이미지/original (5).png',
+            './포트이미지/original (6).png'
+        ];
+
+        const maxButtonClicks = 1;
+        let previousClickCount = 0;
+        let nextClickCounts = 0;
+
+        function initializeImages() {
+            imageList3.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                imageContainer3.appendChild(img);
+            });
+        }
+
+        function refreshSlider() {
+            const totalImagesCount = imageList3.length;
+            const visibleImagesCount = 8;
+            const maxImageIndex = totalImagesCount - visibleImagesCount;
+
+            if (currentImageIndex < 0) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex > maxImageIndex) {
+                currentImageIndex = maxImageIndex;
+            }
+
+            imageContainer3.style.transform = `translateX(-${currentImageIndex * 1070}px)`;
+        }
+
+        function onPreviousButtonClick() {
+            if (previousClickCount < maxButtonClicks) {
+                currentImageIndex--;
+                previousClickCount++;
+                nextClickCounts = Math.max(0, nextClickCounts - 1);
+                refreshSlider();
+            }
+        }
+
+        function onNextButtonClick() {
+            if (nextClickCounts < maxButtonClicks) {
+                currentImageIndex++;
+                nextClickCounts++;
+                previousClickCount = Math.max(0, previousClickCount - 1);
+                refreshSlider();
+            }
+        }
+
+        document.getElementById('prevButton3').addEventListener('click', onPreviousButtonClick);
+        document.getElementById('nextButton3').addEventListener('click', onNextButtonClick);
+
+        initializeImages();
+
+
+
+
+        $(document).ready(function () {
+            $('.toggle-spell').click(function () {
+                var scroll = $(this).next('.secret-scroll');
+                var isVisible = scroll.is(':visible');
+
+                scroll.slideToggle();
+                $(this).text(isVisible ? '+' : '-');
+            });
+        });
+
+
+        const movingBox = document.getElementById('movingBox');
+        const box1 = document.getElementById('boxs1');
+        const box7 = document.getElementById('boxs7');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const box1Bottom = box1.getBoundingClientRect().bottom + scrollY;
+            movingBox.style.top = `${scrollY}px`;
+        });
+
+        const scrollPositionElement = document.getElementById('scrollPosition');
+        window.addEventListener('scroll', function () {
+
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+            scrollPositionElement.textContent = '스크롤 위치: ' + scrollY;
+        });
+
+        function addMoreContent() {
+            const contentDiv = document.createElement('div');
+            contentDiv.style.height = '1000px';
+            contentDiv.style.background = '#e0e0e0';
+            contentDiv.innerHTML = '<h2>추가된 콘텐츠</h2><p>이 콘텐츠는 스크롤바를 만들기 위해 추가되었습니다.</p>';
+            document.body.appendChild(contentDiv);
+        }
+
+        window.onload = function () {
+            addMoreContent();
+        };
+
+        function getPageWidth() {
+            const width = Math.max(
+                document.body.scrollWidth,
+                document.documentElement.scrollWidth,
+                document.body.offsetWidth,
+                document.documentElement.offsetWidth,
+                document.body.clientWidth,
+                document.documentElement.clientWidth
+            );
+            return width;
+        }
+
+        function onScroll() {
+            const pageWidth = getPageWidth();
+            console.log('현재 페이지 너비:', pageWidth);
+        }
+
+        window.addEventListener('scroll', onScroll);
+    </script>
+</body>
+
+</html>
